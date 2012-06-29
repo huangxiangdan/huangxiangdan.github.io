@@ -63,6 +63,126 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "source/_posts/2012-06-26-zombie-ninjas-attack-a-survivors-retrospective.markdown",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/_posts/2012-3-15-deploy-ejabberd.md",
+			"settings":
+			{
+				"buffer_size": 2630,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/_posts/2012-06-7-plan_2012-6.md",
+			"settings":
+			{
+				"buffer_size": 104,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/_posts/2012-06-20-plan-2012-7-8.md",
+			"settings":
+			{
+				"buffer_size": 260,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/_posts/2012-06-19-this-year.md",
+			"settings":
+			{
+				"buffer_size": 2393,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/_posts/2012-06-18-blog-at-service.md",
+			"settings":
+			{
+				"buffer_size": 254,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/_posts/2012-06-15-manila.md",
+			"settings":
+			{
+				"buffer_size": 213,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/_posts/2012-06-10-exist-life.md",
+			"settings":
+			{
+				"buffer_size": 459,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/_posts/2012-03-3-hack-12306.md",
+			"settings":
+			{
+				"buffer_size": 3518,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/_posts/2012-03-26-ejabberd_ruby_auth.md",
+			"settings":
+			{
+				"buffer_size": 1869,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/_posts/2012-03-25-next-month-plan_2012-03.md",
+			"settings":
+			{
+				"buffer_size": 432,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_config.yml",
+			"settings":
+			{
+				"buffer_size": 3005,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "config.rb",
+			"settings":
+			{
+				"buffer_size": 349,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "config.ru",
+			"settings":
+			{
+				"buffer_size": 632,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/_posts/2012-06-27-facebook-menude-androidshi-xian.markdown",
+			"settings":
+			{
+				"buffer_size": 1044,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -128,6 +248,8 @@
 	},
 	"file_history":
 	[
+		"/Users/danny/Documents/rails_projects/octopress/Rakefile",
+		"/Users/danny/Documents/rails_projects/octopress/source/CNAME",
 		"/Users/danny/Documents/rails_projects/kecheng/test/unit/user_test.rb",
 		"/Users/danny/Documents/rails_projects/kecheng/app/models/user.rb",
 		"/Users/danny/Documents/rails_projects/kecheng/app/views/schools/show.html.erb",
@@ -159,6 +281,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"rm_r",
+			"copydot",
+			"CNAME",
+			".xml",
+			"rm",
+			"copydot",
+			"cname",
+			"CNAME",
 			"semesters.active",
 			"semester",
 			"normal_user_post_hash",
@@ -211,8 +341,403 @@
 	"groups":
 	[
 		{
+			"selected": 14,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "source/_posts/2012-06-26-zombie-ninjas-attack-a-survivors-retrospective.markdown",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "source/_posts/2012-3-15-deploy-ejabberd.md",
+					"settings":
+					{
+						"buffer_size": 2630,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								741,
+								741
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "source/_posts/2012-06-7-plan_2012-6.md",
+					"settings":
+					{
+						"buffer_size": 104,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								73,
+								73
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "source/_posts/2012-06-20-plan-2012-7-8.md",
+					"settings":
+					{
+						"buffer_size": 260,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								260,
+								260
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "source/_posts/2012-06-19-this-year.md",
+					"settings":
+					{
+						"buffer_size": 2393,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								69,
+								69
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 108.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "source/_posts/2012-06-18-blog-at-service.md",
+					"settings":
+					{
+						"buffer_size": 254,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								71,
+								71
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "source/_posts/2012-06-15-manila.md",
+					"settings":
+					{
+						"buffer_size": 213,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								78,
+								78
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "source/_posts/2012-06-10-exist-life.md",
+					"settings":
+					{
+						"buffer_size": 459,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								79,
+								79
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "source/_posts/2012-03-3-hack-12306.md",
+					"settings":
+					{
+						"buffer_size": 3518,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2956,
+								2956
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 887.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "source/_posts/2012-03-26-ejabberd_ruby_auth.md",
+					"settings":
+					{
+						"buffer_size": 1869,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								102,
+								102
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "source/_posts/2012-03-25-next-month-plan_2012-03.md",
+					"settings":
+					{
+						"buffer_size": 432,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								432,
+								432
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "_config.yml",
+					"settings":
+					{
+						"buffer_size": 3005,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/YAML/YAML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 892.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "config.rb",
+					"settings":
+					{
+						"buffer_size": 349,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								298,
+								298
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "config.ru",
+					"settings":
+					{
+						"buffer_size": 632,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								608,
+								620
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "source/_posts/2012-06-27-facebook-menude-androidshi-xian.markdown",
+					"settings":
+					{
+						"buffer_size": 1044,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								833,
+								833
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -258,8 +783,32 @@
 		"selected_items":
 		[
 			[
+				"face",
+				"source/_posts/2012-06-27-facebook-menude-androidshi-xian.markdown"
+			],
+			[
+				"rak",
+				"Rakefile"
+			],
+			[
+				"rakefi",
+				"Rakefile"
+			],
+			[
+				"",
+				"_config.yml"
+			],
+			[
 				"confi",
 				"_config.yml"
+			],
+			[
+				"con",
+				"config.rb"
+			],
+			[
+				"zom",
+				"source/_posts/2012-06-26-zombie-ninjas-attack-a-survivors-retrospective.markdown"
 			],
 			[
 				"postli",
@@ -272,10 +821,6 @@
 			[
 				"tran",
 				"db/migrate/20120615060320_transfer_semester_to_school_semester.rb"
-			],
-			[
-				"",
-				"app/controllers/mobile_controller.rb"
 			],
 			[
 				"school",
