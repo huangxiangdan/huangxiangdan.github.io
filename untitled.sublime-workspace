@@ -182,6 +182,14 @@
 				"buffer_size": 1044,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "source/_layouts/default.html",
+			"settings":
+			{
+				"buffer_size": 970,
+				"line_ending": "Unix"
+			}
 		}
 	],
 	"build_system": "",
@@ -341,7 +349,7 @@
 	"groups":
 	[
 		{
-			"selected": 14,
+			"selected": 15,
 			"sheets":
 			[
 				{
@@ -724,13 +732,39 @@
 						"selection":
 						[
 							[
-								833,
-								833
+								485,
+								485
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "source/_layouts/default.html",
+					"settings":
+					{
+						"buffer_size": 970,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								953,
+								953
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
