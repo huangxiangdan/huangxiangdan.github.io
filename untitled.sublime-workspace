@@ -190,6 +190,14 @@
 				"buffer_size": 970,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "source/_posts/2012-07-01-self-redemption.markdown",
+			"settings":
+			{
+				"buffer_size": 705,
+				"line_ending": "Unix"
+			}
 		}
 	],
 	"build_system": "",
@@ -349,7 +357,7 @@
 	"groups":
 	[
 		{
-			"selected": 15,
+			"selected": 16,
 			"sheets":
 			[
 				{
@@ -758,13 +766,41 @@
 						"selection":
 						[
 							[
-								953,
-								953
+								970,
+								970
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "source/_posts/2012-07-01-self-redemption.markdown",
+					"settings":
+					{
+						"buffer_size": 705,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								496,
+								496
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -816,6 +852,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"self",
+				"source/_posts/2012-07-01-self-redemption.markdown"
+			],
 			[
 				"face",
 				"source/_posts/2012-06-27-facebook-menude-androidshi-xian.markdown"
