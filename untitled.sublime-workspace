@@ -88,14 +88,6 @@
 			}
 		},
 		{
-			"file": "source/_posts/2012-06-20-plan-2012-7-8.md",
-			"settings":
-			{
-				"buffer_size": 260,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "source/_posts/2012-06-19-this-year.md",
 			"settings":
 			{
@@ -264,6 +256,7 @@
 	},
 	"file_history":
 	[
+		"/Users/danny/Documents/rails_projects/octopress/source/_posts/2012-06-20-plan-2012-7-8.md",
 		"/Users/danny/Documents/rails_projects/octopress/Rakefile",
 		"/Users/danny/Documents/rails_projects/octopress/source/CNAME",
 		"/Users/danny/Documents/rails_projects/kecheng/test/unit/user_test.rb",
@@ -357,7 +350,7 @@
 	"groups":
 	[
 		{
-			"selected": 16,
+			"selected": 13,
 			"sheets":
 			[
 				{
@@ -440,32 +433,6 @@
 				},
 				{
 					"buffer": 3,
-					"file": "source/_posts/2012-06-20-plan-2012-7-8.md",
-					"settings":
-					{
-						"buffer_size": 260,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								260,
-								260
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Markdown/Markdown.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
 					"file": "source/_posts/2012-06-19-this-year.md",
 					"settings":
 					{
@@ -491,7 +458,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 4,
 					"file": "source/_posts/2012-06-18-blog-at-service.md",
 					"settings":
 					{
@@ -517,7 +484,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 5,
 					"file": "source/_posts/2012-06-15-manila.md",
 					"settings":
 					{
@@ -543,7 +510,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 6,
 					"file": "source/_posts/2012-06-10-exist-life.md",
 					"settings":
 					{
@@ -569,7 +536,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 7,
 					"file": "source/_posts/2012-03-3-hack-12306.md",
 					"settings":
 					{
@@ -597,7 +564,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 8,
 					"file": "source/_posts/2012-03-26-ejabberd_ruby_auth.md",
 					"settings":
 					{
@@ -623,7 +590,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 9,
 					"file": "source/_posts/2012-03-25-next-month-plan_2012-03.md",
 					"settings":
 					{
@@ -649,7 +616,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 10,
 					"file": "_config.yml",
 					"settings":
 					{
@@ -675,7 +642,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 11,
 					"file": "config.rb",
 					"settings":
 					{
@@ -701,7 +668,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 12,
 					"file": "config.ru",
 					"settings":
 					{
@@ -729,7 +696,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 13,
 					"file": "source/_posts/2012-06-27-facebook-menude-androidshi-xian.markdown",
 					"settings":
 					{
@@ -740,8 +707,8 @@
 						"selection":
 						[
 							[
-								485,
-								485
+								0,
+								1044
 							]
 						],
 						"settings":
@@ -755,7 +722,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 14,
 					"file": "source/_layouts/default.html",
 					"settings":
 					{
@@ -783,7 +750,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 16,
+					"buffer": 15,
 					"file": "source/_posts/2012-07-01-self-redemption.markdown",
 					"settings":
 					{
@@ -794,8 +761,8 @@
 						"selection":
 						[
 							[
-								496,
-								496
+								257,
+								257
 							]
 						],
 						"settings":
