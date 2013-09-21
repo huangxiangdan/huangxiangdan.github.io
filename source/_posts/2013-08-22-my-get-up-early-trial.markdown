@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "my_get_up_early_trial"
+title: "我的早起体验"
 date: 2013-08-22 05:21
 comments: true
-categories: 
+categories: work
 ---
 从[上一篇思考](/blog/2013/07/28/something-wrong-in-my-life-now/)到今天，差不多21天的时间。我用了21天的时间实践了我的早起的习惯。21天结束，特此记录一下实践结果。
 
