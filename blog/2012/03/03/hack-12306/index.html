@@ -1,0 +1,382 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>漫漫破解路 - Stoned's Blog</title>
+  <meta name="author" content="Stoned">
+
+  
+  <meta name="description" content="">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://huangxiangdan.github.io/blog/2012/03/03/hack-12306/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Stoned's Blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Stoned's Blog</a></h1>
+  
+    <h2>A startup hacker.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss email">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+    <li><a href="xd_huang1986@163.com" rel="subscribe-email" title="subscribe via email">Email</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:huangxiangdan.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">漫漫破解路</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-03T00:00:00+08:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>前言</h2>
+
+<p>11年是个值得纪录的时刻，12306的推出改变了人们购买火车票的方式，以前是挤火车站，现在是挤12306。于是在这个中药的时刻，各路人马各显神通，自动登录，自动购票，自动刷票等应运而生。最著名的要数<a href="https://github.com/zzdhidden/12306">zzdhidden</a>的项目，一时间不管IE，firefox，Chrome，只要是想要买火车票的，基本都装上了那个脚本，好不风光。</p>
+
+<p>但好景不长，由于铁道部发现了验证码不刷新的漏洞之后，以上方法通通失效。但我还是不甘心，我还是希望能够有一个东西至少能实现自动登录。</p>
+
+<h2>思路</h2>
+
+<p>铁道部的验证码其实并不算复杂，我觉得只要能对它进行OCR，我应该就能实现自动登录。我特意在<a href="http://www.newocr.com/">在线OCR</a>的网站上进行了测试，结果还是比较理想的，自动登录的验证码是可以被识别的。于是就进行了漫漫破解路，我到目前为止还是不清楚，最终能不能成功。</p>
+
+<h2>难度</h2>
+
+<p>铁道部用了HTTPS的方式访问，连图片也是HTTPS的方式，而且在上回修复验证码不刷新的问题之后，验证码已经没有可能性越过，只能硬碰硬的方式进行破解了。</p>
+
+<h2>尝试</h2>
+
+<h3>第一次</h3>
+
+<p>我的第一次尝试确定验证码跟的确定跟什么有关，cookie？page？js的隐藏的东西？还是说通通相关。我的做法是打开浏览器，打开登录页面，再打开另外一个页面，再输入验证码的地址。然后在之前打开的登录页面中输入后一个页面的验证码，结果登录成功。<strong>由此可以得出结论，cookie只跟session相关，跟page是无关的。</strong></p>
+
+<h3>第二次</h3>
+
+<p>第二次尝试，是测试是否只跟session相关。我在Chrome中打开登陆界面，然后用ruby模拟同一个session去抓取验证码。结果却很让我失望，登录失败。所以，由这个试验可以得出的是<strong>因为是HTTPS的协议，在每次连接的时候就默认有个session的概念，所以用cookie的那个session是模拟不了的</strong></p>
+
+<h3>接下来</h3>
+
+<p>在经历了前两次的试验之后，我觉得还剩下两条路：</p>
+
+<ol>
+<li>获取cache中的图片，然后传给验证码破解服务网站，得到验证码之后，提交</li>
+<li>做一个https代理，拦截验证码的请求，破解后传给用户。</li>
+</ol>
+
+
+<p>从用户的角度来讲，我觉得用户很难相信一个代理，第二如果真以这种方式实现的话，我的服务器压力也受不了。所以我优先去尝试第一种方式。于是就有了我的第三次尝试。</p>
+
+<h3>第三次</h3>
+
+<p>用户缓存中的图片。通过搜索，发现在IE下可以用cache api，或者可以<a href="http://support.microsoft.com/kb/293125">将图片拷贝到剪切板</a>。Chrome下可以通过访问<a href="chrome://cache/">chrome://cache/</a>。但怎么把这些图片传给我的服务器呢？我觉得无论是IE还是Chrome，肯定有权限的限制，于是没往这条路上深入。</p>
+
+<h3>第四次</h3>
+
+<p>还是想要在客户端传图片给我的解析服务。于是想到了HTML5的本地存储。于是在测试之后发现这个办法还是不可行。因为碰到了安全沙箱问题。在调用canvas.toDataURL()时会报<a href="http://blog.darkthread.net/post-2011-11-02-html5-canvas-orgin-clean.aspx">SECURITY_ERR: DOM Exception 18</a>错误。</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>  <span class="kd">var</span> <span class="nx">img</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Image</span><span class="p">();</span>   <span class="c1">// Create new img element </span>
+</span><span class='line'>  <span class="nx">img</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="c1">// execute drawImage statements here </span>
+</span><span class='line'>    <span class="nx">ctx</span><span class="p">.</span><span class="nx">drawImage</span><span class="p">(</span><span class="nx">img</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">imgData</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">toDataURL</span><span class="p">(</span><span class="s2">&quot;image/jpg&quot;</span><span class="p">);;</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>  <span class="nx">img</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">&#39;https://dynamic.12306.cn/otsweb/passCodeAction.do?rand=lrand&#39;</span><span class="p">;</span> <span class="c1">// Set     source path</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<h3>第五次</h3>
+
+<p>但突然峰回路转，后来我分析了沙箱问题的原因是我在本地文件做的测试，而图片的域名是12306的，所以会造成跨域的问题。所以后来我小测试了一下，在Chrome的插件Script里执行上述代码，结果发现不再出现上述错误了。解决这最头疼的跨域问题以及图片获取问题之后，接下来的问题就是怎么把图片数据传到我的OCR服务器了。</p>
+
+<p>于是我也是先做了个简单的试验，将获取到的base64数据post到我的OCR服务器，OCR服务base64解码，再存成文件。我一看是张完整的完整的图片，高兴坏了。</p>
+
+<h3>第六次</h3>
+
+<p>但当我把OCR的结果传回到客户端时，意外发生了，客户端怎么也没有收到。通过抓包显示，post请求被cancel掉了。后google之，发现正是js的跨域问题，即一个站点的js无法请求另一站点的js的数据。幸好这块都有成熟的解决办法，通过伪装成Script请求的方式进行数据提交。或者直接就用JSONP的方式。这个方式有一个问题，就是不能使用POST方式进行数据的提交了。但图片的大小（base64）有4K以上，怎么才能把图片完整地传到服务器端呢？（因为get有2K的大小限制）</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'>  <span class="kd">var</span> <span class="nx">JSONP</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;script&quot;</span><span class="p">)</span> <span class="p">;</span>
+</span><span class='line'>   <span class="nx">JSONP</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">JSONP</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">length</span> <span class="o">==</span> <span class="mi">4</span><span class="p">){</span>
+</span><span class='line'>             <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#randCode&quot;</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+</span><span class='line'>             <span class="nx">submitForm</span><span class="p">();</span>
+</span><span class='line'>        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span><span class='line'>             <span class="nx">reLogin</span><span class="p">();</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// alert(result);</span>
+</span><span class='line'>   <span class="p">}</span>
+</span><span class='line'>   <span class="nx">JSONP</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s2">&quot;text/javascript&quot;</span><span class="p">;</span>
+</span><span class='line'>   <span class="nx">JSONP</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s2">&quot;http://localhost:3000/ocr&quot;</span><span class="p">;</span>
+</span><span class='line'>   <span class="nb">document</span><span class="p">.</span><span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">JSONP</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<h3>第七次</h3>
+
+<p>get方式提交我想了两个办法，一是多次分批提交数据，服务端再进行组合。而是利用多个cookie进行提交，这样只用一次请求就可以传完了（cookie的长度限制是4K）。但我在进行cookie测试的时候，失败了，原因是我在12306的域名下无法访问另外一个站点的cookie。所以只能采用第一个办法。</p>
+
+<h3>第八次</h3>
+
+<p>那下面就是苦力活了。只要传好数据，ORC之后回传给浏览器，再进行登录就好了。我在做这一步的时候碰到挺多问题的。</p>
+
+<ol>
+<li>是jquery的getJSON方法总是无法触发callback方法，不知何故。没办法，我只能用complete方法代替callback方法进行触发。</li>
+<li>由于是分批次的上传图片数据，要注意图片的顺序问题。所以应该是一个接一个地传。</li>
+<li>ruby的默认session同样有4K的大小限制，因此需要改成数据库的方式进行sesison的存储。http://www.cslog.cn/Content/ruby_on_rails_sessions/ https://github.com/nmerouze/mongo_session_store/issues/8</li>
+<li>提交之前需要encodeURIComponent一下</li>
+</ol>
+
+
+<h2>结束</h2>
+
+<p>至此，破解12306从设想变成了现实。其实回过头来看看，其实也不是很难，但充满了惊险刺激。比大学时做ACM的题目更加兴奋。</p>
+
+<p>Github:<a href="http://github.com/huangxiangdan/12306">http://github.com/huangxiangdan/12306</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Stoned</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-03T00:00:00+08:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/03/15/deploy-ejabberd/" title="Next Post: ejabberd部署">ejabberd部署 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/11/28/about-this-time/">关于此刻</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/12/those-things/">那些东西</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/31/a-new-day/">新的一天</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/01/08/chat-server-performance-tune/">一次聊天服务器性能调优经历分享</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/01/03/2013-summary/">2013 summary</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/huangxiangdan">@huangxiangdan</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'huangxiangdan',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Stoned -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'stoned';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  <script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2153d3fd7ddf77e40468fdf1e78a201b' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

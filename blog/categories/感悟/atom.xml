@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 感悟 | Stoned's Blog]]></title>
+  <link href="http://huangxiangdan.github.io/blog/categories/感悟/atom.xml" rel="self"/>
+  <link href="http://huangxiangdan.github.io/"/>
+  <updated>2014-11-29T03:44:31+08:00</updated>
+  <id>http://huangxiangdan.github.io/</id>
+  <author>
+    <name><![CDATA[Stoned]]></name>
+    <email><![CDATA[xd_huang1986@163.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[那些东西]]></title>
+    <link href="http://huangxiangdan.github.io/blog/2014/04/12/those-things/"/>
+    <updated>2014-04-12T09:05:00+08:00</updated>
+    <id>http://huangxiangdan.github.io/blog/2014/04/12/those-things</id>
+    <content type="html"><![CDATA[<p>有些事情，说出来矫情<br/>
+比如诗歌、梦想、泪水<br/>
+却<br/>
+实实在在影响了人这一辈子</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[新的一天]]></title>
+    <link href="http://huangxiangdan.github.io/blog/2014/03/31/a-new-day/"/>
+    <updated>2014-03-31T18:10:00+08:00</updated>
+    <id>http://huangxiangdan.github.io/blog/2014/03/31/a-new-day</id>
+    <content type="html"><![CDATA[<p>好久没有写东西了，写东西在我想做的事情里的优先级是极低的，低于上coursera的课程，低于技术，低于一切我想做的事情。但我又觉得它很重要，我总是安慰自己说，如果我有时间，如果我有心情，我就一定会写东西。但这样的事情从来不会主动发生。看了些<a href="http://zhuanlan.zhihu.com/prattle">陈天的知乎专栏</a>，很羡慕他有这么多的积累。我和他有相同的作息时间，早上5点起床，但我却没有任何积淀。这很让我沮丧。有一天看到他的文章中提到他是在下午6点到8点这段时间用来写东西，我深受启发，于是决定6点到8点这段时间用来强迫自己写些东西。</p>
+
+<p>我不知道这样的事情能够坚持多久，我从来就不是个勤奋的人，浮躁，缺乏耐心。这段时间对自己的认识发生了很大的变化，看到自己想做的事情正在一点点的进行着，充满惊喜，看到自己想到达的地方，一点点靠近，充满欣喜。我不知道我是否足够幸运到达目的地，或许这并不重要，重要的是我已迈入了新的一天。</p>
+
+<p>今天就写这些，纪念这新的一天。</p>
+]]></content>
+  </entry>
+  
+</feed>
