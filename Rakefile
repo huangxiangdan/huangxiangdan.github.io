@@ -302,7 +302,7 @@ task :setup_github_pages, :repo do |t, args|
     repo_url = get_stdin("Enter the read/write url for your repository: ")
   end
   user = repo_url.match(/:([^\/]+)/)[1]
-  branch = (repo_url.match(/\/[\w-]+.github.com/).nil?) ? 'gh-pages' : 'master'
+  branch = (repo_url.match(/\/[\w-]+.github.io/).nil?) ? 'gh-pages' : 'master'
   project = (branch == 'gh-pages') ? repo_url.match(/\/([^\.]+)/)[1] : ''
   unless `git remote -v`.match(/origin.+?octopress.git/).nil?
     # If octopress is still the origin remote (from cloning) rename it to octopress
@@ -322,7 +322,7 @@ task :setup_github_pages, :repo do |t, args|
       end
     end
   end
-  url = "http://#{user}.github.com"
+  url = "http://#{user}.github.io"
   url += "/#{project}" unless project == ''
   jekyll_config = IO.read('_config.yml')
   jekyll_config.sub!(/^url:.*$/, "url: #{url}")
