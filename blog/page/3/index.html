@@ -9,7 +9,8 @@
   <meta name="author" content="Stoned">
 
   
-  <meta name="description" content="今天的状态出奇的糟糕，原因可能是打了一天的dota，颇为不顺。总结出一点，自己的团队意识太过薄弱，也可能是因为思维惯性，老是把自己当成神灵，不管对方有几个人，直接冲上去，杀一个回本，杀两个白赚。很多时候队友颇为郁闷，说你一个后期（CK）老这么送哪行，把局势都断送了。也确实由于我的问题， &hellip;">
+  <meta name="description" content="这篇什么都没有写，留下它，记录我自己——2013-7-28
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +67,88 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/09/22/what-are-you-work-for/">What Are You Work For</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-22T00:00:00+08:00" pubdate data-updated="true">Sep 22<span>nd</span>, 2012</time>
+        
+         | <a href="/blog/2012/09/22/what-are-you-work-for/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>这篇什么都没有写，留下它，记录我自己——2013-7-28</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/08/03/ti-xing-zi-ji-zhu-yi-de-shi-qing/">提醒自己注意的事情</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-03T16:08:00+08:00" pubdate data-updated="true">Aug 3<span>rd</span>, 2012</time>
+        
+         | <a href="/blog/2012/08/03/ti-xing-zi-ji-zhu-yi-de-shi-qing/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>受触动，我觉得得认真想一想几件事情了。</p>
+
+<ol>
+<li>将自己的兴趣转换为利益，做一个挣点小钱的android开发者。我是一条已经被证实了的道路，实践之。</li>
+<li>做些和GIS相关的事情，我觉得有一些条件特别好，我已经逐渐有了些互联网的基因，试过做游戏，做过很多小东西，思路更加开阔。不太有技术上的盲区。而跟GIS结合，做相关的事情，我相信我会是一个最合适的人选。其他人或没有互联网基因，或没有hacker精神，不会用心琢磨这些小事情的。做些尝试挺好的。</li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -465,133 +548,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/03/26/ejabberd_ruby_auth/">Ejabberd使用ruby做用户验证（extauth_program）</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-26T00:00:00+08:00" pubdate data-updated="true">Mar 26<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/03/26/ejabberd_ruby_auth/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>背景</h2>
-
-<p>使用ejabberd做聊天服务，最大的问题是怎么跟现有的系统对接，其中最重要的就是用户系统如何对接。而这一点，ejabberd已经为我们考虑到了，为了方便不会使用erlang的开发者使用自己的用户系统，ejabberd提供了<strong>extauth_program</strong>这个配置，从而可以使用任何可执行的脚本作为用户系统的接口。其中perl语言的demo在ejabberd srouce的example里就有。而更多的配置可以参考<a href="http://www.ejabberd.im/extauth">Authentication Scripts</a>，你可以使用非常多的语言和数据库，包括perl,python,甚至php，c#。其实你用任何语言都没有关系，因为毕竟只有短短几十行代码，你唯一要做的就是设置好你的数据库参数。</p>
-
-<h2>我的尝试步骤</h2>
-
-<p>但是不幸的是官方给的参考里是没有ruby脚本的（有脚本，但是页面已经失效），于是乎我在网上狂搜extauth ruby的实现，还好找到一个据说有点问题的ruby代码<a href="http://www.ejabberd.im/node/919">ejabberd not exec my script </a>，那人就是因为执行不了所以才发帖求助的。于是</p>
-
-<ol>
-<li>我copy了他的代码，然后稍作了修改，配置好extauth。果然执行不了，没有任何反应，连我设置的log都没有输出来。而ejabberd的log是<strong>extauth 脚本意外终止，原因是normal</strong></li>
-<li>于是我做了个测试，将所有的代码都删掉，只保留log的部分，结果还是没有log，而我用ruby执行是有log</li>
-<li>这让我一度怀疑ejabberd不支持ruby，于是我换用ejabberd source里的perl脚本，结果一切工作正常。</li>
-<li>我误认为ejabberd不支持ruby，于是我放弃ruby的方式，在网上down了<a href="http://www.ejabberd.im/check_mysql_perl">Authenticate Against MySQL with Perl</a>，修改后run，结果发现跟1的结果是一样，无法运行。</li>
-<li>既然有一个正确的，一个错误的相同语言的脚本，那我就可以比对哪里导致运行失败了。比对的结果是4下载的sql没有执行权限，于是我chmod a+x，4运行正常了，但我仍然不能正确登录。</li>
-<li>在perl console环境中一步步执行4的脚本，发现原因是我缺少sql lib的支持。于是准备换用python脚本。</li>
-<li>在修改python脚本支持的时候，我意外发现所有的文件开头都有一行#!/usr/bin/perl这样的注释，我突然明白为什么我的ruby脚本不能执行了，因为它不知道怎么去执行，于是在ruby文件开头加上了#!/usr/bin/env ruby，这个世界顿时清净了。后来想起我好像在鸟哥的私房菜里边见过这些东西，后悔看得太草了。</li>
-</ol>
-
-
-<h2>要点</h2>
-
-<ol>
-<li>你的script本身要能正确执行，即有执行权限，而且是可执行的（第一行有类似#!/usr/bin/env ruby的注释）</li>
-<li>正确配置extauth。如下：
-  {auth_method, external}.%%这是要点
-  {extauth_program, &#8220;/var/lib/ejabberd/db_auth.rb”}.</li>
-<li>没有第三了。</li>
-</ol>
-
-
-<h2>下载</h2>
-
-<p><a href="https://gist.github.com/2495010">a ejabberd extauth script write by ruby</a></p>
-
-<h2>参考资料</h2>
-
-<ol>
-<li><a href="http://www.ejabberd.im/extauth">extauth list</a></li>
-<li><a href="http://www.ejabberd.im/node/919">ejabberd not exec my script </a></li>
-<li><a href="http://stackoverflow.com/questions/6127284/ejabberd-extauth-using-erlang-escript">ejabberd extauth using erlang escript</a></li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/03/25/next-month-plan_2012-03/">下个月的打算</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-25T00:00:00+08:00" pubdate data-updated="true">Mar 25<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/03/25/next-month-plan_2012-03/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>从三月开始，到现在两个月的时间。期间想做太多的事情，很多事情起了个头，就放在那里了，所以决定从5月开始收一收了。做完手头上想做的事情。这些事情分别是：</p>
-
-<ol>
-<li><a href="http://ruiana.com/2012/03/03/12306-auto-login">12306 自动登录</a>【闲置】</li>
-<li>英语阅读工具【放弃】</li>
-<li>妈妈说——为我弟做的语音记录提醒Android软件，<strong>5月6号之前完成</strong>【done】</li>
-<li><a href="http://manila.ruiana.com">马尼拉</a>——html5游戏【done，完成基本版本】</li>
-<li><a href="http://yitu.me">图图的blog</a>【闲置】</li>
-<li>在家里——给老婆做的东西，还没开始做，6月份再做吧。【看情况】</li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -609,6 +565,14 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/18/2014-summary/">2014年终总结</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/25/za-si/">杂思</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/11/28/about-this-time/">关于此刻</a>
       </li>
     
@@ -618,14 +582,6 @@
     
       <li class="post">
         <a href="/blog/2014/03/31/a-new-day/">新的一天</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/01/08/chat-server-performance-tune/">一次聊天服务器性能调优经历分享</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/01/03/2013-summary/">2013 summary</a>
       </li>
     
   </ul>
@@ -671,7 +627,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Stoned -
+  Copyright &copy; 2015 - Stoned -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
