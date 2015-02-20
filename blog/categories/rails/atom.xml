@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: rails | Stoned's Blog]]></title>
+  <link href="http://huangxiangdan.github.io/blog/categories/rails/atom.xml" rel="self"/>
+  <link href="http://huangxiangdan.github.io/"/>
+  <updated>2015-02-21T00:00:31+08:00</updated>
+  <id>http://huangxiangdan.github.io/</id>
+  <author>
+    <name><![CDATA[Stoned]]></name>
+    <email><![CDATA[xd_huang1986@163.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[splitting a fat model into multiple files]]></title>
+    <link href="http://huangxiangdan.github.io/blog/2013/12/04/splitting-a-fat-model-into-multiple-files/"/>
+    <updated>2013-12-04T18:07:10+08:00</updated>
+    <id>http://huangxiangdan.github.io/blog/2013/12/04/splitting-a-fat-model-into-multiple-files</id>
+    <content type="html"><![CDATA[<h2>起因</h2>
+
+<p>Rails的应用内，总有一些超级复杂的model，比如User。而正因是<strong>胖model,瘦controller</strong>这样的指导思想，会导致一些model臃肿不堪，有些model甚至会超过1000行，而一旦超过1000行，一个类的代码就变得难以维护了。所以一段时间内，我们为了不让我们的model太臃肿，我们只能不往User里面写代码，而把一些代码写在其他的model里面。比如写成如下的方式</p>
+
+<pre><code>#exam.rb
+class Exam &lt; ActiveRecord::Base
+    def add_user(user)
+    end
+end
+</code></pre>
+
+<p>但这样的方式<code>Exam.add_user(user)</code>明显没有<code>user.join_exam(exam)</code>直观。</p>
+
+<pre><code>#user.rb
+class User &lt; ActiveRecord::Base
+    def join_exam(exam)
+    end
+end
+</code></pre>
+
+<p>所以为了兼顾直观与保持model可维护性更高，我查找了一些资料，尝试为我们的model瘦身。</p>
+
+<h2>解决思路</h2>
+
+<p>一个广为流传的办法是<a href="https://gist.github.com/dhh/1014971">Use concerns to keep your models manageable</a>，这是dhh（Creator of Ruby on Rails）大神推荐的方式，已被列入Rails4的规范之中了(<a href="http://ruby-china.org/topics/7709">Rails4重大设计决策：“胖”Model用ActiveSupport::Concern瘦身</a>)。</p>
+
+<p>但使用concern的根本目的不是为了解决单个model的肥胖问题，而是为了让一些model通用的代码片段存在于一个合适的位置，比如commentable，这样但凡有用到comment的model，只要<code>include commentable</code>就可以实现评论相关的功能，这样的实现方式既简单又直观。</p>
+
+<p>如果为model瘦身，主要的问题是，如何分离你的业务逻辑，因为单纯的将代码发在几个小文件中是没有什么意义的（为什么没有意义？因为会增加你查找的难度和理解的难度），这也是为什么<a href="http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/">7 Patterns to Refactor Fat ActiveRecord Models</a>说</p>
+
+<pre><code>“Any application with an app/concerns directory is concerning.”
+</code></pre>
+
+<p>的一个重要原因。</p>
+
+<p>所以综合以上思路，最终实践得出了三个可以简化User model的办法</p>
+
+<ul>
+<li>为model抽象一些功能性concern，比如Authenticatable, Genderable。</li>
+<li>为model分离一些业务相关模块。比如user_post, 比如 user_event</li>
+<li>将特殊的功能模块抽象成class</li>
+</ul>
+
+
+<h2>实践</h2>
+
+<p>以下实践均以User model为例</p>
+
+<h3>为model抽象一些功能性concern</h3>
+
+<p>这样做符合concern本身的意图，比如将用户验证的相关操作和相关scope放在Authenticatable的module，这样User就拥有了可拔插的能力，如果想去掉相关的功能，只需要取消include就可以了。</p>
+
+<p>所以，这部分的代码类似于</p>
+
+<pre><code>#app/models/concerns/authenticatable.rb
+# -*- encoding : utf-8 -*-
+module Authenticatable
+  extend ActiveSupport::Concern
+  included do
+    def self.basic_auth(account, password)
+    end
+  end
+
+  def has_password?
+  end
+end
+</code></pre>
+
+<h3>为model分离一些业务相关模块</h3>
+
+<p>这样做是不太符合concern本身的意图的，但借用concern来表达我们的业务逻辑，也没有什么问题。但这样做最大的问题是，这部分的concern不应该和传统的concern混在一起，这样不同model的业务逻辑容易混乱（至少不好查找）。</p>
+
+<p>所以，我们将这部分代码放在了<code>app/models/concerns/user_concern/</code>中，代码类似如下</p>
+
+<pre><code>#app/models/concerns/user_concern/post.rb
+# -*- encoding : utf-8 -*-
+module UserConcern
+  module Post
+    extend ActiveSupport::Concern
+
+    included do
+      has_many :posts, :dependent =&gt; :destroy
+      has_many :other_posts, :dependent =&gt; :destroy
+    end
+  end
+end
+</code></pre>
+
+<h3>将特殊的功能模块抽象成class</h3>
+
+<p>这种办法最受<a href="http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/">7 Patterns to Refactor Fat ActiveRecord Models</a>推崇，所以，可以借鉴一些这边文章提到的一些方法来抽象我们的代码。这部分代码类似于</p>
+
+<pre><code>#app/models/lib/edit_limit.rb
+# -*- encoding : utf-8 -*-
+class EditLimit
+  NO_MODIFY_LIMIT_USERS_KEY = "no_modify_limit_users"
+
+  MODIFY_LIMIT = 5
+  MODIFY_LIMIT_KEY = "editable_times_%d"
+
+  def initialize(user)
+    @user = user
+  end
+
+  def self.no_modify_limit_users
+    Rails.cache.fetch NO_MODIFY_LIMIT_USERS_KEY do
+      Set.new
+    end
+  end
+
+  def self.add_no_modify_limit_user(user)
+    no_limit_user_ids = no_modify_limit_users
+
+    no_limit_user_ids &lt;&lt; user.id
+
+    Rails.cache.write NO_MODIFY_LIMIT_USERS_KEY, no_limit_user_ids
+    no_limit_user_ids
+  end
+end
+</code></pre>
+
+<h3></h3>
+
+<p>最终，我们在user.rb的引用如下所示</p>
+
+<pre><code>#app/models/user.rb
+class User &lt; ActiveRecord::Base
+  include Authenticatable
+  include UserConcern::Post
+end
+</code></pre>
+
+<h2>总结</h2>
+
+<p>因为Rails本身的设计，对于一些不太复杂的逻辑与应用，实在无需煞费苦心去寻求瘦身与简化。因为符合Rails本身的设计思想在很大程度上就已经很好的分离了model，view，controller（MVC）三者的职责。而一些复杂的应用，在不考虑更好的可读性的前提下（比如将许多逻辑放置在关联表中），也不会形成太过肥胖的model。所以，只有一些人像我这样对可读性有些洁癖，又想让model保持简单的人，才需要类似的解决办法。</p>
+
+<h2>参考资料</h2>
+
+<ul>
+<li><a href="https://gist.github.com/dhh/1014971">Use concerns to keep your models manageable</a></li>
+<li><a href="http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/">7 Patterns to Refactor Fat ActiveRecord Models</a></li>
+<li><a href="https://37signals.com/svn/posts/3372-put-chubby-models-on-a-diet-with-concerns">Put chubby models on a diet with concerns</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[support emoji in rails 3.2.14]]></title>
+    <link href="http://huangxiangdan.github.io/blog/2013/11/27/support-emoji-in-rails-3-dot-2-14/"/>
+    <updated>2013-11-27T09:29:23+08:00</updated>
+    <id>http://huangxiangdan.github.io/blog/2013/11/27/support-emoji-in-rails-3-dot-2-14</id>
+    <content type="html"><![CDATA[<p>本文主要参考一片日文的文章<a href="http://qiita.com/ikm/items/7ac0c32c5264eac2b8bb">Rails 3.2でiOS5の絵文字を扱う</a>，实践并修改完成。让你的应用可以支持emoji，需要达到以下几点要求</p>
+
+<ol>
+<li>数据库支持emoji(utf8mb4)</li>
+<li>rails的sql adapter可以支持以utf8mb4的方式访问数据库</li>
+<li>传输过程中，utf8mb4的信息不会丢失</li>
+</ol>
+
+
+<h1>让MySQL数据库支持emoji(utf8mb4)的存储</h1>
+
+<p>MySQL 5.5.3以上已经支持了utf8mb4的字符集，所以如果你的MySQL是5.5.3以上，只需要在my.conf文件中按照如下的配置就可以支持utf8mb4的字符集了。</p>
+
+<pre><code>[client]
+default-character-set = utf8mb4
+
+[mysqld]
+collation-server = utf8mb4_unicode_ci
+character-set-server = utf8mb4
+</code></pre>
+
+<p>在修改完my.conf配置之后，重启mysql，检查字符集是否已经更改，除了<code>character_set_system</code>和<code>character_set_filesystem</code>之外，其他的字符集都需要变成utf8mb4类型。</p>
+
+<pre><code>mysql&gt; show variables like 'char%';
++--------------------------+------------------------------------------------------+
+| Variable_name            | Value                                                |
++--------------------------+------------------------------------------------------+
+| character_set_client     | utf8mb4                                              |
+| character_set_connection | utf8mb4                                              |
+| character_set_database   | utf8mb4                                              |
+| character_set_filesystem | binary                                               |
+| character_set_results    | utf8mb4                                              |
+| character_set_server     | utf8mb4                                              |
+| character_set_system     | utf8                                                 |
+| character_sets_dir       | /usr/local/Cellar/mysql/5.5.10/share/mysql/charsets/ |
++--------------------------+------------------------------------------------------+
+</code></pre>
+
+<p>为了支持之前用utf8创建的表同样支持emoji，你还需要将之前的表修改未utf8mb4字符集</p>
+
+<pre><code>alter table posts convert to character set utf8mb4 collate utf8mb4_unicode_ci;
+</code></pre>
+
+<h1>rails支持emoji(utf8mb4)</h1>
+
+<p>rails对utf8bm4的支持主要通过sql adapter实现，mysql2的0.3.13版本已经支持了utf8mb4 encoding。主要在配置(database.yml)的时候加上以下配置即可</p>
+
+<pre><code>charset: utf8mb4
+encoding: utf8mb4
+collation: utf8mb4_unicode_ci
+</code></pre>
+
+<p>在做完上述工作之后你的rails其实已经支持了utf8mb4的存储与读取，但为了与之前的代码兼容，你还需要做下面的事情</p>
+
+<h2>处理MySQL index 767个字节的限制</h2>
+
+<p>因为mysql对index是有767个字节的限制的，在我们默认使用utf8编码的时候，如果我们定义如下的结构和index，是不会有问题的</p>
+
+<pre><code>add_column :users, :name, :string
+add_index :users, :name
+</code></pre>
+
+<p>因为utf8最多占3个字节，而rails中创建string类型的字段时，默认用的是varchar(255)这样的数据库结构，所以255*3=765，没有超出767的限制。但我们把字符集改成了utf8mb4，所以一个字最多可以占用4个字节，那255*4就会超出767的字符限制了，所以我们没有办法使用上述的方式来创建字段和index了。</p>
+
+<p>所以我们应该限定name的长度</p>
+
+<pre><code>add_column :users, :name, :string, :limit =&gt; 100
+add_index :users, :name
+</code></pre>
+
+<p>但对于之前的系统，如果我们全部修改string类型的index,会是一个很大的工作量（主要是在正式服务器上的耗费时间会很长），所以我们可以有个折中的方案，只修改index的长度限制。</p>
+
+<pre><code>add_index :entries, [:user_id, :url],
+  unique: true, length: { url: (191-4) }
+</code></pre>
+
+<p>所以你需要找遍所有的migration文件，通通加上长度的限制，这样才能避免一个新同学可以通过<code>rake db:migrate</code>。</p>
+
+<p>除此之外，你还需要修改rails系统的schema_migrations_table表的结构，打开activerecord（<code>bundle open activerecord</code>），修改lib/active_record/connection_adapters/abstract/schema_statements.rb的419行，换成下面的语句。</p>
+
+<pre><code>schema_migrations_table.column :version, :string, :null =&gt; false, :limit =&gt; 15
+</code></pre>
+
+<p>或者你可以像我一样，打个补丁。将以下内容写入<code>config/initializers/active_record_schema_migrations_version.rb</code>文件</p>
+
+<pre><code>require 'active_support/core_ext/array/wrap'
+require 'active_support/deprecation/reporting'
+
+module ActiveRecord
+  module ConnectionAdapters # :nodoc:
+    module SchemaStatements
+            # Should not be called normally, but this operation is non-destructive.
+      # The migrations module handles this automatically.
+      def initialize_schema_migrations_table
+        sm_table = ActiveRecord::Migrator.schema_migrations_table_name
+
+        unless table_exists?(sm_table)
+          create_table(sm_table, :id =&gt; false) do |schema_migrations_table|
+            schema_migrations_table.column :version, :string, :null =&gt; false, :limit =&gt; 15
+          end
+          add_index sm_table, :version, :unique =&gt; true,
+            :name =&gt; "#{Base.table_name_prefix}unique_schema_migrations#{Base.table_name_suffix}"
+
+          # Backwards-compatibility: if we find schema_info, assume we've
+          # migrated up to that point:
+          si_table = Base.table_name_prefix + 'schema_info' + Base.table_name_suffix
+
+          if table_exists?(si_table)
+            ActiveSupport::Deprecation.warn "Usage of the schema table `#{si_table}` is deprecated. Please switch to using `schema_migrations` table"
+
+            old_version = select_value("SELECT version FROM #{quote_table_name(si_table)}").to_i
+            assume_migrated_upto_version(old_version)
+            drop_table(si_table)
+          end
+        end
+      end
+    end
+  end
+end
+</code></pre>
+
+<h1>修改JSON gem保障utf8mb4信息不丢失</h1>
+
+<p>据<a href="http://blog.sosedoff.com/2012/04/26/emoji-and-rails-json-output-issue/">Emoji and Rails JSON output issue</a>文章描述，在未对json库做补丁之前，JSON会丢失掉一些信息。（我测试的结果是，未打补丁之前，确实emoji无法正确显示）</p>
+
+<pre><code>&gt;&gt; JSON({:a =&gt; "\360\237\230\204"}.to_json)
+=&gt; {"a"=&gt;"\357\230\204"}
+</code></pre>
+
+<p>所以，针对这个问题的解决方案就是，把以下内容写入<code>config/initializers/active_support_encoding.rb</code>文件</p>
+
+<pre><code>module ActiveSupport::JSON::Encoding
+    class &lt;&lt; self
+        def escape(string)
+            if string.respond_to?(:force_encoding)
+                string = string.encode(::Encoding::UTF_8, :undef =&gt; :replace).force_encoding(::Encoding::BINARY)
+            end
+            json = string.gsub(escape_regex) { |s| ESCAPED_CHARS[s] }
+            json = %("#{json}")
+            json.force_encoding(::Encoding::UTF_8) if json.respond_to?(:force_encoding)
+            json
+        end
+    end
+end
+</code></pre>
+
+<p>这样做完之后，你就可以支持emoji在json格式中的传输了。</p>
+
+<p><a href="http://qiita.com/ikm/items/7ac0c32c5264eac2b8bb">Rails 3.2でiOS5の絵文字を扱う</a>还给了另外一个解决办法，</p>
+
+<pre><code>module ActiveSupport
+    module JSON
+        module Encoding
+          class &lt;&lt; self
+            def escape_with_json_gem(string)
+              ::JSON.generate([string])[1..-2]
+            end
+            alias_method_chain :escape, :json_gem
+          end
+        end
+    end
+end
+</code></pre>
+
+<p>但据我测试，如果在不使用resque的时候，但在使用<code>resque</code>的时候，就会出现死循环的问题了。导致<code>resque</code>无法启动。如果你也使用了<code>resque</code>，你可以在escape_with_json_gem里面加入puts信息，来验证我说的话。很有可能是resque对JSON库的generate做了一些改动（我看了resque的代码，没有发现相关的细节，但resque确实动过JSON gem），导致escape与generate循环调用了。因为这个原因，我们使用这种办法来做JSON的补丁。</p>
+
+<h1>添加测试保证对utf8mb4的支持</h1>
+
+<p>为了确保我们上述的工作已经很好地支持了emoji，你最好可以在你的测试中加入类似的测试用例，来确保这一点。</p>
+
+<pre><code>  test "post emoji comment create" do
+    post = FactoryGirl.create(:post)
+    post :create, :format =&gt; :json, :comment =&gt; {:content =&gt; "😔"}
+    assert_response_result(true)
+    #测试json是否正确
+    assert_equal "😔", @response_json["content"]
+    #测试数据库是否正确保存与读取
+    assert_equal "😔", Comments.first.content
+  end
+</code></pre>
+
+<h3>参考资料</h3>
+
+<ul>
+<li><a href="http://qiita.com/ikm/items/7ac0c32c5264eac2b8bb">Rails 3.2でiOS5の絵文字を扱う</a></li>
+<li><a href="http://blog.sosedoff.com/2012/04/26/emoji-and-rails-json-output-issue/">Emoji and Rails JSON output issue</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

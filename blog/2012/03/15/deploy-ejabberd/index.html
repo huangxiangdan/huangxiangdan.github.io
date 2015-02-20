@@ -1,0 +1,341 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>ejabberd部署 - Stoned's Blog</title>
+  <meta name="author" content="Stoned">
+
+  
+  <meta name="description" content="">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://huangxiangdan.github.io/blog/2012/03/15/deploy-ejabberd/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Stoned's Blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Stoned's Blog</a></h1>
+  
+    <h2>A startup hacker.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss email">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+    <li><a href="xd_huang1986@163.com" rel="subscribe-email" title="subscribe via email">Email</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:huangxiangdan.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Ejabberd部署</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-15T00:00:00+08:00" pubdate data-updated="true">Mar 15<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>我们选用ejabberd作为我们聊天的Server，原因是可以1、erlang性能高2、用得人多。
+经过两天的折腾，我终于在三台不同的系统上都装上了ejabberd，分别讲讲这三个平台的安装经历。</p>
+
+<h2>Mac</h2>
+
+<p>ejabberd有Mac下的dmg安装包，有可以通过source安装。</p>
+
+<ol>
+<li>我的第一次尝试是直接使用了ejabberd的dmg安装包，结果执行postinstall脚本的时候出错，服务起不来。没有具体的错误提示。</li>
+<li>所以换用source安装的方式。先装的erlang 15B01，然后安装ejabberd 2.1.10版本。结果使用/sbin/ejabberdctl start 没有任何反应。通过netstat看发现没有5280端口。于是换ejabberdctl live命令，发现提示是端口冲突。后来想起来我装过openfire，于是卸载掉，重新启动，还是出错。</li>
+<li>后来发现erlang 15B01出的比ejabberd2.1.10还晚，怀疑是版本问题。于是卸载erlang 15B01，换用erlang 15B。</li>
+<li>装好之后，重新安装ejabberd，好像就没什么大问题了。</li>
+<li>启动访问http://localhost:5280/admin。是否能出来页面。</li>
+</ol>
+
+
+<h2>Cent OS</h2>
+
+<p>直接用source安装的，安装完之后没什么问题，有问题可以参考下面的资料。</p>
+
+<h2>Ubuntu  10.10</h2>
+
+<ol>
+<li>我首先是直接用apt-get安装的erlang，结果一看，版本是5.9.1就是15B01，所以就卸载掉了。</li>
+<li>后来手动安装erlang失败，发现缺少依赖库</li>
+<li>所以必须先安装下面的东西</li>
+<li>sudoapt-get -yinstall\
+
+<pre><code> build-essential m4 libncurses5-dev \
+ libssh-dev unixodbc-dev libgmp3-dev \
+ libwxgtk2.8-dev libglu1-mesa-dev \
+ fop xsltproc default-jdk
+</code></pre></li>
+<li>安装完erlang后，又手动安装了ejabberd，结果启动总是不成功。</li>
+<li>后又换apt-get安装ejabberd，启动时提示几个文件有权限问题，我直接chmod 777就搞定了。</li>
+<li>ubuntu中启动ejabberd是这样启动的，/etc/init.d/ejabberd start。不要用ejabberdctl，会失败。</li>
+</ol>
+
+
+<h2>排错指南</h2>
+
+<ol>
+<li>在start之前检查下epmd, beam, beam.smp等是否启动了，如果启动着，先把他们杀掉，他们是erlang相关的东西。</li>
+<li>检查是否有应用占用了5222,5223,5280等端口，5222端口是xmpp协议本身规定的，所以默认是用此端口。如果之前装过其他的XMPP server请停止或卸载，比如OpenFire</li>
+<li>ejabberd有很重的erlang依赖关系，所以一定要对好版本，参考下面的资料。</li>
+<li>如果不需要配置，也是可以启动服务的，所以无法启动不是配置的问题。</li>
+<li>如果start没什么错误提示，可以改用status或者live方式启动，这样错误会明显一点，如果还是没有错误提示，只能到/var/log/ejabberd底下去看了。</li>
+</ol>
+
+
+<h2>参考资料</h2>
+
+<ol>
+<li><a href="http://blog.sina.com.cn/s/blog_6d2cab390100zop7.html">ejabberd 简明配置</a></li>
+<li><a href="http://blog.sina.com.cn/s/blog_6d2cab390100zop7.html">ejabberd 简明配置2</a></li>
+<li><a href="http://usenrong.iteye.com/blog/855430">ejabberd清理</a></li>
+<li><a href="http://www.mail-archive.com/server-devel@lists.laptop.org/msg02776.html">ejabberd清理2</a></li>
+<li><a href="http://boris.muehmer.de/2011/11/09/installing-erlangotp-r14b04-on-ubuntu-11-10-from-source-tarball/">
+Installing Erlang/OTP R14B04 on Ubuntu 11.10 from source tarball </a></li>
+<li><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=86&amp;t=90547">
+E: Sub-process /usr/bin/dpkg returned an error code 解决办法</a></li>
+<li><a href="http://blog.csdn.net/summerhust/article/details/7201298">odbc : ODBC library – link check failed</a></li>
+<li><a href="http://www.ejabberd.im/node/4917">
+Debian package difference</a></li>
+<li><a href="http://digitalsanctum.com/2009/10/01/installing-erlang-on-mac-os-x/">installing-erlang-on-mac-os-x</a></li>
+<li><a href="http://www.ejabberd.im/erlang">ejabberd与erlang版本对应关系(重要)</a></li>
+<li><a href="http://wiki.jabbercn.org/Ejabberd2:%E5%AE%89%E8%A3%85%E5%92%8C%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97">ejabberd安装配置指南(不太有用)</a></li>
+<li><a href="http://lboynton.com/tag/ejabberd/">
+Debugging ejabberd</a></li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Stoned</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-15T00:00:00+08:00" pubdate data-updated="true">Mar 15<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/03/03/hack-12306/" title="Previous Post: 漫漫破解路">&laquo; 漫漫破解路</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/03/25/next-month-plan_2012-03/" title="Next Post: 下个月的打算">下个月的打算 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/02/20/about-us/">about us</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/20/the-last-day-of-year/">记除夕一夜</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/18/for-the-idealist/">for_the_idealist</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/18/2014-summary/">2014年终总结</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/25/za-si/">杂思</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/huangxiangdan">@huangxiangdan</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'huangxiangdan',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Stoned -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'stoned';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://huangxiangdan.github.io/blog/2012/03/15/deploy-ejabberd/';
+        var disqus_url = 'http://huangxiangdan.github.io/blog/2012/03/15/deploy-ejabberd/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  <script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2153d3fd7ddf77e40468fdf1e78a201b' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

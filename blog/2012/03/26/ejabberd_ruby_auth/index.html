@@ -1,0 +1,303 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>ejabberd使用ruby做用户验证（extauth_program） - Stoned's Blog</title>
+  <meta name="author" content="Stoned">
+
+  
+  <meta name="description" content="">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://huangxiangdan.github.io/blog/2012/03/26/ejabberd_ruby_auth/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Stoned's Blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Stoned's Blog</a></h1>
+  
+    <h2>A startup hacker.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss email">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+    <li><a href="xd_huang1986@163.com" rel="subscribe-email" title="subscribe via email">Email</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:huangxiangdan.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Ejabberd使用ruby做用户验证（extauth_program）</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-26T00:00:00+08:00" pubdate data-updated="true">Mar 26<span>th</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>背景</h2>
+
+<p>使用ejabberd做聊天服务，最大的问题是怎么跟现有的系统对接，其中最重要的就是用户系统如何对接。而这一点，ejabberd已经为我们考虑到了，为了方便不会使用erlang的开发者使用自己的用户系统，ejabberd提供了<strong>extauth_program</strong>这个配置，从而可以使用任何可执行的脚本作为用户系统的接口。其中perl语言的demo在ejabberd srouce的example里就有。而更多的配置可以参考<a href="http://www.ejabberd.im/extauth">Authentication Scripts</a>，你可以使用非常多的语言和数据库，包括perl,python,甚至php，c#。其实你用任何语言都没有关系，因为毕竟只有短短几十行代码，你唯一要做的就是设置好你的数据库参数。</p>
+
+<h2>我的尝试步骤</h2>
+
+<p>但是不幸的是官方给的参考里是没有ruby脚本的（有脚本，但是页面已经失效），于是乎我在网上狂搜extauth ruby的实现，还好找到一个据说有点问题的ruby代码<a href="http://www.ejabberd.im/node/919">ejabberd not exec my script </a>，那人就是因为执行不了所以才发帖求助的。于是</p>
+
+<ol>
+<li>我copy了他的代码，然后稍作了修改，配置好extauth。果然执行不了，没有任何反应，连我设置的log都没有输出来。而ejabberd的log是<strong>extauth 脚本意外终止，原因是normal</strong></li>
+<li>于是我做了个测试，将所有的代码都删掉，只保留log的部分，结果还是没有log，而我用ruby执行是有log</li>
+<li>这让我一度怀疑ejabberd不支持ruby，于是我换用ejabberd source里的perl脚本，结果一切工作正常。</li>
+<li>我误认为ejabberd不支持ruby，于是我放弃ruby的方式，在网上down了<a href="http://www.ejabberd.im/check_mysql_perl">Authenticate Against MySQL with Perl</a>，修改后run，结果发现跟1的结果是一样，无法运行。</li>
+<li>既然有一个正确的，一个错误的相同语言的脚本，那我就可以比对哪里导致运行失败了。比对的结果是4下载的sql没有执行权限，于是我chmod a+x，4运行正常了，但我仍然不能正确登录。</li>
+<li>在perl console环境中一步步执行4的脚本，发现原因是我缺少sql lib的支持。于是准备换用python脚本。</li>
+<li>在修改python脚本支持的时候，我意外发现所有的文件开头都有一行#!/usr/bin/perl这样的注释，我突然明白为什么我的ruby脚本不能执行了，因为它不知道怎么去执行，于是在ruby文件开头加上了#!/usr/bin/env ruby，这个世界顿时清净了。后来想起我好像在鸟哥的私房菜里边见过这些东西，后悔看得太草了。</li>
+</ol>
+
+
+<h2>要点</h2>
+
+<ol>
+<li>你的script本身要能正确执行，即有执行权限，而且是可执行的（第一行有类似#!/usr/bin/env ruby的注释）</li>
+<li>正确配置extauth。如下：
+  {auth_method, external}.%%这是要点
+  {extauth_program, "/var/lib/ejabberd/db_auth.rb”}.</li>
+<li>没有第三了。</li>
+</ol>
+
+
+<h2>下载</h2>
+
+<p><a href="https://gist.github.com/2495010">a ejabberd extauth script write by ruby</a></p>
+
+<h2>参考资料</h2>
+
+<ol>
+<li><a href="http://www.ejabberd.im/extauth">extauth list</a></li>
+<li><a href="http://www.ejabberd.im/node/919">ejabberd not exec my script </a></li>
+<li><a href="http://stackoverflow.com/questions/6127284/ejabberd-extauth-using-erlang-escript">ejabberd extauth using erlang escript</a></li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Stoned</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-26T00:00:00+08:00" pubdate data-updated="true">Mar 26<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/03/25/next-month-plan_2012-03/" title="Previous Post: 下个月的打算">&laquo; 下个月的打算</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/06/07/plan_2012-6/" title="Next Post: 戒Dota两周">戒Dota两周 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/02/20/about-us/">about us</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/20/the-last-day-of-year/">记除夕一夜</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/18/for-the-idealist/">for_the_idealist</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/18/2014-summary/">2014年终总结</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/25/za-si/">杂思</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/huangxiangdan">@huangxiangdan</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'huangxiangdan',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Stoned -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'stoned';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  <script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2153d3fd7ddf77e40468fdf1e78a201b' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>
