@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>配置munin插件 - Stoned's Blog</title>
+  <title>记除夕一夜 - Stoned's Blog</title>
   <meta name="author" content="Stoned">
 
   
-  <meta name="description" content="接上文 安装ejabberd插件 可参考http://dev.groupdock.com/2010/10/05/monitoring-ejabberd-with-munin.html
-具体步骤是： 创建具体监控的软链接 sudo ln -s /usr/share/munin/plugins/ &hellip;">
+  <meta name="description" content="今年春节，因为在媳妇家里过年，一个四川的小山村，没有网络，没有娱乐。当我看完了iPad上缓存的电影，百无聊赖，突然发现，自己仅剩的“娱乐”也就看看书，写写字了。 除夕当天，早早的吃了饭，洗了脚，准备上床睡觉。外面烟花似锦，鞭炮霹雳哗啦。群里有人策划了抢红包活动，我想参与，可是因为2G网络的龟速， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://huangxiangdan.github.io/blog/2013/10/18/add-munin-plugins/">
+  <link rel="canonical" href="http://huangxiangdan.github.io/blog/2015/02/20/the-last-day-of-year/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -70,7 +69,7 @@
   
   <header>
     
-      <h1 class="entry-title">配置munin插件</h1>
+      <h1 class="entry-title">记除夕一夜</h1>
     
     
       <p class="meta">
@@ -86,7 +85,7 @@
   
 
 
-<time datetime="2013-10-18T11:50:00+08:00" pubdate data-updated="true">Oct 18<span>th</span>, 2013</time>
+<time datetime="2015-02-20T05:02:00+08:00" pubdate data-updated="true">Feb 20<span>th</span>, 2015</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -95,66 +94,22 @@
   </header>
 
 
-<div class="entry-content"><p>接上文</p>
+<div class="entry-content"><p>今年春节，因为在媳妇家里过年，一个四川的小山村，没有网络，没有娱乐。当我看完了iPad上缓存的电影，百无聊赖，突然发现，自己仅剩的“娱乐”也就看看书，写写字了。</p>
 
-<h2>安装ejabberd插件</h2>
+<p>除夕当天，早早的吃了饭，洗了脚，准备上床睡觉。外面烟花似锦，鞭炮霹雳哗啦。群里有人策划了抢红包活动，我想参与，可是因为2G网络的龟速，试了几轮铩羽而归之后，也就锁上手机，安心看书了。</p>
 
-<p>可参考<a href="http://dev.groupdock.com/2010/10/05/monitoring-ejabberd-with-munin.html">http://dev.groupdock.com/2010/10/05/monitoring-ejabberd-with-munin.html</a>
-具体步骤是：</p>
+<p>看了书，总会想写点东西，我记得我的14年年终总结只写了一半，心想着，“今年事今年毕”。也就从床上爬起，披上衣服，坐在电脑前，开始写东西。</p>
 
-<ol>
-<li><p>创建具体监控的软链接</p>
+<p>人总是无聊、好奇、而又容易分心的，哪怕你已经决定了要做一件事情。当我看到我14年做过的高考倒计时的事情时，总在想着，那群人在大过年的，是否还坚持早起呢？于是我连上手机的网络，打开<a href="http://guole.me/leaderboard">早起排行榜</a>，在看到近千人的签到名单的那一刻，各种情愫喷薄而出，懊恼，悔恨，惭愧，骄傲。平息之后，心里只剩一个念头，“如果我能和他们对话，我只想跟他们说，have a better year”。本想摇着头带着遗憾离去，可偏偏这时候又记起当初做这个的时候，留了Push这个功能的。于是，停下手头的事情，去写给他们的祝福，带着赎罪的心态。</p>
 
-<pre><code> sudo ln -s /usr/share/munin/plugins/ejabberd_ /etc/munin/plugins/ejabberd_users
-</code></pre></li>
-<li><p>配置ejabberd配置文件(/etc/munin/plugin-conf.d/munin-node.conf)</p>
+<p>可是写了半天，却发现没有合适的词句表达自己的感情，于是叫上另一个和我一起鼓捣这个事情的同事，订了主题，让她帮我写个文案。她在收到我的消息的时候，那懊恼和悔恨仿佛比我还多，恨不得说，“我们起了头，却没有把事情做好，抛下一群相信你的人，我们是该下地狱的”。看到她的懊恼，我反倒很开心。我是有些诗意，有些理想主义的，14年尝试打开自己，把这些感觉落地，我相信这些诗意，终会有赏识的人的，于是这诗意变成了高考倒计时以及倒计时里面的诗。我不知道，留着这些东西有什么用，在这现实的互联网中。或许我也不该有答案，否则这就是现实的一个手段了。但我坚信，我所坚持的东西终将收获回报，所有坚信这点的人都会。</p>
 
-<pre><code> [ejabberd_users]
- user root
+<p>同事在片刻之间就写好了文案，我拿过来，稍作修改，就立刻发了出去。文案如下，这是给他们的，也是给我们的。</p>
 
- [ejabberd_*]
- env.vhosts yourhost.com
-</code></pre></li>
-<li>可通过sudo munin-run ejabberd_users（因为你的users是root，所以必须用sudo）进行测试</li>
-<li>理论上这样就可以搞定了，但因为插件的更新速度更不上ejabberd的更新速度，所有很有可能不能用。以ejabberd_users为例，实际上munin只需要你运行/sbin/ejabberdctl connected_users_number，然后把值传给它，所以如果碰到问题，可以查看ejabberd_的代码，修改成合适的样子。
+<p><code>新的一年即将开始，这是新的一年，你们也将开始新的人生。看到如此勤奋的你们(http://guole.me/leaderboard )，我只有感动。所有的努力终将有回报，我们的坚持会让我们变成更好的人。新年快乐，新的一年会更好。
+</code></p>
 
-<h2>监控某个端口的连接数</h2>
-
-<pre><code> ln -s /usr/share/munin/plugins/port_ /etc/munin/plugins/port_5222
-</code></pre></li>
-</ol>
-
-
-<h2>自定义munin插件</h2>
-
-<p>可参考<a href="http://munin-monitoring.org/wiki/HowToWritePlugins">http://munin-monitoring.org/wiki/HowToWritePlugins</a></p>
-
-<p>就像下面这个样子（你可以用任意语言来写），你就可以搞定了</p>
-
-<pre><code>#!/bin/sh
-
-case $1 in
-   config)
-        cat &lt;&lt;'EOM'
-graph_title Load average
-graph_vlabel load
-load.label load
-EOM
-        exit 0;;
-esac
-
-echo -n "load.value "
-cut -d' ' -f2  /proc/loadavg
-</code></pre>
-
-<p>如果有权限问题，需要用root运行的话，可以在/etc/munin/plugin-conf.d/munin-node.conf中配置好所需要的用户，比如</p>
-
-<pre><code>[ejabberd_users]
-user root
-timeout 60
-</code></pre>
-
-<p>如果你的命令需要很长时间的话可以加上timeout 60这样的设置（参考<a href="http://munin-monitoring.org/wiki/plugin-conf.d">http://munin-monitoring.org/wiki/plugin-conf.d</a>）</p>
+<p>发完这些，继续写我的年终总结。回忆一年，续上前文，只是在写到14年收获了自信，在写到抱负(ambitions)与责任感的时候，我便开始了不可抑制的哭泣。当泪水浸湿眼眶，我在想，这便是最好的年终总结。</p>
 </div>
 
 
@@ -177,7 +132,7 @@ timeout 60
   
 
 
-<time datetime="2013-10-18T11:50:00+08:00" pubdate data-updated="true">Oct 18<span>th</span>, 2013</time>
+<time datetime="2015-02-20T05:02:00+08:00" pubdate data-updated="true">Feb 20<span>th</span>, 2015</time>
       
 
 
@@ -192,10 +147,10 @@ timeout 60
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/08/27/setup-munin-and-plugins/" title="Previous Post: setup munin and plugins">&laquo; setup munin and plugins</a>
+        <a class="basic-alignment left" href="/blog/2015/02/18/for-the-idealist/" title="Previous Post: for_the_idealist">&laquo; for_the_idealist</a>
       
       
-        <a class="basic-alignment right" href="/blog/2013/10/18/setup-munin-notification/" title="Next Post: setup munin notification">setup munin notification &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2015/02/20/about-us/" title="Next Post: about us">about us &raquo;</a>
       
     </p>
   </footer>
@@ -291,8 +246,8 @@ timeout 60
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://huangxiangdan.github.io/blog/2013/10/18/add-munin-plugins/';
-        var disqus_url = 'http://huangxiangdan.github.io/blog/2013/10/18/add-munin-plugins/';
+        var disqus_identifier = 'http://huangxiangdan.github.io/blog/2015/02/20/the-last-day-of-year/';
+        var disqus_url = 'http://huangxiangdan.github.io/blog/2015/02/20/the-last-day-of-year/';
         var disqus_script = 'embed.js';
       
     (function () {

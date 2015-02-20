@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>配置munin插件 - Stoned's Blog</title>
+  <title>about us - Stoned's Blog</title>
   <meta name="author" content="Stoned">
 
   
-  <meta name="description" content="接上文 安装ejabberd插件 可参考http://dev.groupdock.com/2010/10/05/monitoring-ejabberd-with-munin.html
-具体步骤是： 创建具体监控的软链接 sudo ln -s /usr/share/munin/plugins/ &hellip;">
+  <meta name="description" content="和同事做1 on 1的时候，我总希望问一个问题，“Why are here？” 有些人思考过，有些人没有。留在一个地方，很多时候是一种惯性，这惯性不需要思考。而对于长时间待在一个地方的人来说，留下却是一个决定。这决定关乎生活质量，关乎前程，关乎价值观。职场的新人说，“我留下来是觉得这里挺好的， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://huangxiangdan.github.io/blog/2013/10/18/add-munin-plugins/">
+  <link rel="canonical" href="http://huangxiangdan.github.io/blog/2015/02/20/about-us/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -70,7 +69,7 @@
   
   <header>
     
-      <h1 class="entry-title">配置munin插件</h1>
+      <h1 class="entry-title">About Us</h1>
     
     
       <p class="meta">
@@ -86,7 +85,7 @@
   
 
 
-<time datetime="2013-10-18T11:50:00+08:00" pubdate data-updated="true">Oct 18<span>th</span>, 2013</time>
+<time datetime="2015-02-20T06:17:00+08:00" pubdate data-updated="true">Feb 20<span>th</span>, 2015</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -95,66 +94,13 @@
   </header>
 
 
-<div class="entry-content"><p>接上文</p>
+<div class="entry-content"><p>和同事做1 on 1的时候，我总希望问一个问题，“Why are here？” 有些人思考过，有些人没有。留在一个地方，很多时候是一种惯性，这惯性不需要思考。而对于长时间待在一个地方的人来说，留下却是一个决定。这决定关乎生活质量，关乎前程，关乎价值观。职场的新人说，“我留下来是觉得这里挺好的，人挺好的，做得也开心，这就够了”。有人也会说，“我没有别的选择，留下来也还不赖”，听到这种回答，我总会追根究底，我说，“你知道自己价值多少吗？”他说，“我大概知道，至少我知道在这里拿的一定不是最多。”这个时候，我就会问，“那你为什么还在这里？”这个时候他们就会告诉你心底的答案了，“因为这个团队”，“因为做的事情”。我听过的最让我感触的答案是，“留下来是因为选择和什么样的人一起共事，我不知道我们创业最终能否成功，成或者败都有可能，太大的不确定性了，我没有办法把筹码压在这件事情上。留下来是因为我们所有人做事的方式，所有人思考的方式，留下来就因为这些东西。”我说，“这些是什么？”他说，“可以叫做文化或者价值观吧，我不知道，我喜欢这些东西，我相信这些东西，同时，我也在实践和坚持这些东西。我留下来或许就是因为这个。”</p>
 
-<h2>安装ejabberd插件</h2>
+<p>我留下来，是因为我选择了这样的价值观。这是我听过的最有感触的答案了。</p>
 
-<p>可参考<a href="http://dev.groupdock.com/2010/10/05/monitoring-ejabberd-with-munin.html">http://dev.groupdock.com/2010/10/05/monitoring-ejabberd-with-munin.html</a>
-具体步骤是：</p>
+<p>这个答案，让我想起我曾苦苦思索的一个问题，“我们都是些最厉害的人吗？”</p>
 
-<ol>
-<li><p>创建具体监控的软链接</p>
-
-<pre><code> sudo ln -s /usr/share/munin/plugins/ejabberd_ /etc/munin/plugins/ejabberd_users
-</code></pre></li>
-<li><p>配置ejabberd配置文件(/etc/munin/plugin-conf.d/munin-node.conf)</p>
-
-<pre><code> [ejabberd_users]
- user root
-
- [ejabberd_*]
- env.vhosts yourhost.com
-</code></pre></li>
-<li>可通过sudo munin-run ejabberd_users（因为你的users是root，所以必须用sudo）进行测试</li>
-<li>理论上这样就可以搞定了，但因为插件的更新速度更不上ejabberd的更新速度，所有很有可能不能用。以ejabberd_users为例，实际上munin只需要你运行/sbin/ejabberdctl connected_users_number，然后把值传给它，所以如果碰到问题，可以查看ejabberd_的代码，修改成合适的样子。
-
-<h2>监控某个端口的连接数</h2>
-
-<pre><code> ln -s /usr/share/munin/plugins/port_ /etc/munin/plugins/port_5222
-</code></pre></li>
-</ol>
-
-
-<h2>自定义munin插件</h2>
-
-<p>可参考<a href="http://munin-monitoring.org/wiki/HowToWritePlugins">http://munin-monitoring.org/wiki/HowToWritePlugins</a></p>
-
-<p>就像下面这个样子（你可以用任意语言来写），你就可以搞定了</p>
-
-<pre><code>#!/bin/sh
-
-case $1 in
-   config)
-        cat &lt;&lt;'EOM'
-graph_title Load average
-graph_vlabel load
-load.label load
-EOM
-        exit 0;;
-esac
-
-echo -n "load.value "
-cut -d' ' -f2  /proc/loadavg
-</code></pre>
-
-<p>如果有权限问题，需要用root运行的话，可以在/etc/munin/plugin-conf.d/munin-node.conf中配置好所需要的用户，比如</p>
-
-<pre><code>[ejabberd_users]
-user root
-timeout 60
-</code></pre>
-
-<p>如果你的命令需要很长时间的话可以加上timeout 60这样的设置（参考<a href="http://munin-monitoring.org/wiki/plugin-conf.d">http://munin-monitoring.org/wiki/plugin-conf.d</a>）</p>
+<p>我们中间有人很厉害，比如天放，德州高手，滑雪高手，无可挑剔的智商与逻辑能力，就是五音不全这一点不太好（哈哈，：））。比如师伟，天才少年（曾经），哈佛高材生，超高智商与情商。可是其他人呢？包括我自己。我们都还不错，可是都不是最厉害的人。我曾经在苦苦思索这个问题的答案，因为如果我们不是最优秀的团队，我们如何能做成最优秀的事情。</p>
 </div>
 
 
@@ -177,7 +123,7 @@ timeout 60
   
 
 
-<time datetime="2013-10-18T11:50:00+08:00" pubdate data-updated="true">Oct 18<span>th</span>, 2013</time>
+<time datetime="2015-02-20T06:17:00+08:00" pubdate data-updated="true">Feb 20<span>th</span>, 2015</time>
       
 
 
@@ -192,10 +138,8 @@ timeout 60
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/08/27/setup-munin-and-plugins/" title="Previous Post: setup munin and plugins">&laquo; setup munin and plugins</a>
+        <a class="basic-alignment left" href="/blog/2015/02/20/the-last-day-of-year/" title="Previous Post: 记除夕一夜">&laquo; 记除夕一夜</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/10/18/setup-munin-notification/" title="Next Post: setup munin notification">setup munin notification &raquo;</a>
       
     </p>
   </footer>
@@ -291,8 +235,8 @@ timeout 60
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://huangxiangdan.github.io/blog/2013/10/18/add-munin-plugins/';
-        var disqus_url = 'http://huangxiangdan.github.io/blog/2013/10/18/add-munin-plugins/';
+        var disqus_identifier = 'http://huangxiangdan.github.io/blog/2015/02/20/about-us/';
+        var disqus_url = 'http://huangxiangdan.github.io/blog/2015/02/20/about-us/';
         var disqus_script = 'embed.js';
       
     (function () {

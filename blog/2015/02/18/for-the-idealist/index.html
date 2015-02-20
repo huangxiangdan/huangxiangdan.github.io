@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>配置munin插件 - Stoned's Blog</title>
+  <title>for_the_idealist - Stoned's Blog</title>
   <meta name="author" content="Stoned">
 
   
-  <meta name="description" content="接上文 安装ejabberd插件 可参考http://dev.groupdock.com/2010/10/05/monitoring-ejabberd-with-munin.html
-具体步骤是： 创建具体监控的软链接 sudo ln -s /usr/share/munin/plugins/ &hellip;">
+  <meta name="description" content="在一次主题为年终总结的1 on 1上，一位同事告诉我说，我是我们所有人中最现实的一个。我听到这话，随即反驳，我怎么会是一个现实的人呢？他说，在这个社会上，或许我们都还不够现实，但在我们这个群体，我就是那个最现实的人。而且，这个“现实”是褒义的。我想了想，是的。 我们都很聪明，踏实，同时又很无助。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://huangxiangdan.github.io/blog/2013/10/18/add-munin-plugins/">
+  <link rel="canonical" href="http://huangxiangdan.github.io/blog/2015/02/18/for-the-idealist/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -70,7 +69,7 @@
   
   <header>
     
-      <h1 class="entry-title">配置munin插件</h1>
+      <h1 class="entry-title">For_the_idealist</h1>
     
     
       <p class="meta">
@@ -86,7 +85,7 @@
   
 
 
-<time datetime="2013-10-18T11:50:00+08:00" pubdate data-updated="true">Oct 18<span>th</span>, 2013</time>
+<time datetime="2015-02-18T23:17:00+08:00" pubdate data-updated="true">Feb 18<span>th</span>, 2015</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -95,66 +94,15 @@
   </header>
 
 
-<div class="entry-content"><p>接上文</p>
+<div class="entry-content"><p>在一次主题为年终总结的1 on 1上，一位同事告诉我说，我是我们所有人中最现实的一个。我听到这话，随即反驳，我怎么会是一个现实的人呢？他说，在这个社会上，或许我们都还不够现实，但在我们这个群体，我就是那个最现实的人。而且，这个“现实”是褒义的。我想了想，是的。</p>
 
-<h2>安装ejabberd插件</h2>
+<p>我们都很聪明，踏实，同时又很无助。就像一群理想主义者，在现实面前头破血流。可是，本不该如此，不是吗？我们都擅长一些事情，做得都还不错，我们内心柔软，善良，我们都该得到属于我们应得的那份回报，不是吗？可是这个世界说，你做得还不够，你需要比其他人更厉害，你得接受现实，并且驾驭它。有人擅长做这个，有人不是，我一度想，我们应该每个人都变成这样，把理想藏在心底，驾驭现实，可是，这是一个多么残酷的事情啊，现实会让人变得现实。我们都很聪明，却都不够聪明，在理想与现实的平衡中，我们拿现实教育自己，懊恼自己的理想化，我们永远会发现我们不够现实。可是，这是唯一的答案吗？我不愿意相信。许多我们看中的品质，也多在理想二字上。理想应该得到回报，这样才能不被现实吞噬，才能帮你掌握好理想与现实的平衡。理想主义者值得这样的回报。</p>
 
-<p>可参考<a href="http://dev.groupdock.com/2010/10/05/monitoring-ejabberd-with-munin.html">http://dev.groupdock.com/2010/10/05/monitoring-ejabberd-with-munin.html</a>
-具体步骤是：</p>
+<p>But how？每一刻，我站在理想与现实之间的钢丝上，我多希望有人带我前行，有人说，你太偏向理想了，你应该现实一些。他还会告诉你，现实过度了，那样只会让你丢掉理想。我不惧怕变得现实，只是害怕被现实吞噬。可是，这样的事情没有发生过。我坚持我的理想，摇摇摆摆，跌跌撞撞，在某一刻，我终于触到了现实的底部，我回过身，摆正自己，大步向前。理想主义者应该得到他们应得的回报。不，甚至是奖励。理想会让人变得更有创造性，内心柔软，这些品质值得最大程度的奖励。</p>
 
-<ol>
-<li><p>创建具体监控的软链接</p>
+<p>站在此刻，作为这个人群中最现实的人，我突然明白了自己的责任。有人相信你，有人希望得到你的帮助，你还有什么理由不这么做呢？这是我的责任，也是我的希望，带着一群理想主义者前行，不让他们受到伤害，帮他们得到他们应得的回报。</p>
 
-<pre><code> sudo ln -s /usr/share/munin/plugins/ejabberd_ /etc/munin/plugins/ejabberd_users
-</code></pre></li>
-<li><p>配置ejabberd配置文件(/etc/munin/plugin-conf.d/munin-node.conf)</p>
-
-<pre><code> [ejabberd_users]
- user root
-
- [ejabberd_*]
- env.vhosts yourhost.com
-</code></pre></li>
-<li>可通过sudo munin-run ejabberd_users（因为你的users是root，所以必须用sudo）进行测试</li>
-<li>理论上这样就可以搞定了，但因为插件的更新速度更不上ejabberd的更新速度，所有很有可能不能用。以ejabberd_users为例，实际上munin只需要你运行/sbin/ejabberdctl connected_users_number，然后把值传给它，所以如果碰到问题，可以查看ejabberd_的代码，修改成合适的样子。
-
-<h2>监控某个端口的连接数</h2>
-
-<pre><code> ln -s /usr/share/munin/plugins/port_ /etc/munin/plugins/port_5222
-</code></pre></li>
-</ol>
-
-
-<h2>自定义munin插件</h2>
-
-<p>可参考<a href="http://munin-monitoring.org/wiki/HowToWritePlugins">http://munin-monitoring.org/wiki/HowToWritePlugins</a></p>
-
-<p>就像下面这个样子（你可以用任意语言来写），你就可以搞定了</p>
-
-<pre><code>#!/bin/sh
-
-case $1 in
-   config)
-        cat &lt;&lt;'EOM'
-graph_title Load average
-graph_vlabel load
-load.label load
-EOM
-        exit 0;;
-esac
-
-echo -n "load.value "
-cut -d' ' -f2  /proc/loadavg
-</code></pre>
-
-<p>如果有权限问题，需要用root运行的话，可以在/etc/munin/plugin-conf.d/munin-node.conf中配置好所需要的用户，比如</p>
-
-<pre><code>[ejabberd_users]
-user root
-timeout 60
-</code></pre>
-
-<p>如果你的命令需要很长时间的话可以加上timeout 60这样的设置（参考<a href="http://munin-monitoring.org/wiki/plugin-conf.d">http://munin-monitoring.org/wiki/plugin-conf.d</a>）</p>
+<p>（所有的词汇，都不够具象，但它们都有它们自己的含义，我能感受的到，如果你需要，我可以翻译，但希望你没有这样的想法）</p>
 </div>
 
 
@@ -177,7 +125,7 @@ timeout 60
   
 
 
-<time datetime="2013-10-18T11:50:00+08:00" pubdate data-updated="true">Oct 18<span>th</span>, 2013</time>
+<time datetime="2015-02-18T23:17:00+08:00" pubdate data-updated="true">Feb 18<span>th</span>, 2015</time>
       
 
 
@@ -192,10 +140,10 @@ timeout 60
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/08/27/setup-munin-and-plugins/" title="Previous Post: setup munin and plugins">&laquo; setup munin and plugins</a>
+        <a class="basic-alignment left" href="/blog/2015/02/18/2014-summary/" title="Previous Post: 2014年终总结">&laquo; 2014年终总结</a>
       
       
-        <a class="basic-alignment right" href="/blog/2013/10/18/setup-munin-notification/" title="Next Post: setup munin notification">setup munin notification &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2015/02/20/the-last-day-of-year/" title="Next Post: 记除夕一夜">记除夕一夜 &raquo;</a>
       
     </p>
   </footer>
@@ -291,8 +239,8 @@ timeout 60
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://huangxiangdan.github.io/blog/2013/10/18/add-munin-plugins/';
-        var disqus_url = 'http://huangxiangdan.github.io/blog/2013/10/18/add-munin-plugins/';
+        var disqus_identifier = 'http://huangxiangdan.github.io/blog/2015/02/18/for-the-idealist/';
+        var disqus_url = 'http://huangxiangdan.github.io/blog/2015/02/18/for-the-idealist/';
         var disqus_script = 'embed.js';
       
     (function () {
