@@ -3,6 +3,7 @@ layout: post
 title: "记除夕一夜"
 date: 2015-02-20 05:02
 comments: true
+published: false
 categories: 
 ---
 今年春节，因为在媳妇家里过年，一个四川的小山村，没有网络，没有娱乐。当我看完了iPad上缓存的电影，百无聊赖，突然发现，自己仅剩的“娱乐”也就看看书，写写字了。
