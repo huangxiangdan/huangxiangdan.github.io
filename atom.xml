@@ -4,7 +4,7 @@
   <title><![CDATA[Stoned's Blog]]></title>
   <link href="http://huangxiangdan.github.io/atom.xml" rel="self"/>
   <link href="http://huangxiangdan.github.io/"/>
-  <updated>2015-02-21T00:00:31+08:00</updated>
+  <updated>2016-03-14T06:51:48+08:00</updated>
   <id>http://huangxiangdan.github.io/</id>
   <author>
     <name><![CDATA[Stoned]]></name>
@@ -14,17 +14,36 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Hi there]]></title>
+    <link href="http://huangxiangdan.github.io/blog/2016/03/14/hi-there/"/>
+    <updated>2016-03-14T06:14:00+08:00</updated>
+    <id>http://huangxiangdan.github.io/blog/2016/03/14/hi-there</id>
+    <content type="html"><![CDATA[<p>Hi there, 2016.</p>
+
+<p>只想打个招呼，对我自己。</p>
+
+<p>15年早已过去，16年早已开始。但仿佛时间走的太快，我走的太慢，我总是那个落在时间后头拼命追赶的小孩。但今天，我仿佛看到了2016的列车，虽然它还在前面，但触手可及。</p>
+
+<p>今天是我很长一段时间以来有意识的早起，早起是为了找回那个刻苦、专注的自己，来面对前路坎坎。人总有弱点，但恐怕最大的弱点便是贪图安逸，安逸已让我抓狂。我知道我无法消灭它，唯有磨练更强的自己抵抗它。所以今天，也是磨练的开始。</p>
+
+<p>不管怎么样，我会记住你。Hi there, 2016.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[about us]]></title>
     <link href="http://huangxiangdan.github.io/blog/2015/02/20/about-us/"/>
     <updated>2015-02-20T06:17:00+08:00</updated>
     <id>http://huangxiangdan.github.io/blog/2015/02/20/about-us</id>
     <content type="html"><![CDATA[<p>和同事做1 on 1的时候，我总希望问一个问题，“Why are here？” 有些人思考过，有些人没有。留在一个地方，很多时候是一种惯性，这惯性不需要思考。而对于长时间待在一个地方的人来说，留下却是一个决定。这决定关乎生活质量，关乎前程，关乎价值观。职场的新人说，“我留下来是觉得这里挺好的，人挺好的，做得也开心，这就够了”。有人也会说，“我没有别的选择，留下来也还不赖”，听到这种回答，我总会追根究底，我说，“你知道自己价值多少吗？”他说，“我大概知道，至少我知道在这里拿的一定不是最多。”这个时候，我就会问，“那你为什么还在这里？”这个时候他们就会告诉你心底的答案了，“因为这个团队”，“因为做的事情”。我听过的最让我感触的答案是，“留下来是因为选择和什么样的人一起共事，我不知道我们创业最终能否成功，成或者败都有可能，太大的不确定性了，我没有办法把筹码压在这件事情上。留下来是因为我们所有人做事的方式，所有人思考的方式，留下来就因为这些东西。”我说，“这些是什么？”他说，“可以叫做文化或者价值观吧，我不知道，我喜欢这些东西，我相信这些东西，同时，我也在实践和坚持这些东西。我留下来或许就是因为这个。”</p>
 
-<p>我留下来，是因为我选择了这样的价值观。这是我听过的最有感触的答案了。</p>
+<p>“我留下来，是因为我选择了这样的价值观。”这是我听过的最有感触的答案了。</p>
 
 <p>这个答案，让我想起我曾苦苦思索的一个问题，“我们都是些最厉害的人吗？”</p>
 
-<p>我们中间有人很厉害，比如天放，德州高手，滑雪高手，无可挑剔的智商与逻辑能力，就是五音不全这一点不太好（哈哈，：））。比如师伟，天才少年（曾经），哈佛高材生，超高智商与情商。可是其他人呢？包括我自己。我们都还不错，可是都不是最厉害的人。我曾经在苦苦思索这个问题的答案，因为如果我们不是最优秀的团队，我们如何能做成最优秀的事情。</p>
+<p>我们中间有人很厉害，比如天放，德州高手，滑雪高手，无可挑剔的智商与逻辑能力，就是五音不全这一点不太好（哈哈，：））。比如师伟，天才少年（曾经），哈佛高材生，超高智商与情商。可是其他人呢？包括我自己。我们都还不错，可是都不是最厉害的人。我曾经在苦苦思索这个问题的答案，因为如果我们不是最优秀的团队，我们如何能成就最优秀的事情？</p>
+
+<p>我不知道如何来定义最优秀，从个人而言或者能力而言，我们一定不是最棒的，虽然我们聪明（毫无疑问），思维严谨，逻辑严密，且富有节操（在互联网中难能可贵）。可是，这只是基本素质，谈不上过人之处。我们从来都不是最牛的，这是铁一般的事实。</p>
 ]]></content>
   </entry>
   
@@ -940,9 +959,9 @@ load.load.critical 15
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[配置munin插件]]></title>
+    <title type="html"><![CDATA[Add Munin Plugins]]></title>
     <link href="http://huangxiangdan.github.io/blog/2013/10/18/add-munin-plugins/"/>
-    <updated>2013-10-18T11:50:00+08:00</updated>
+    <updated>2013-10-18T00:00:00+08:00</updated>
     <id>http://huangxiangdan.github.io/blog/2013/10/18/add-munin-plugins</id>
     <content type="html"><![CDATA[<p>接上文</p>
 
@@ -1004,134 +1023,6 @@ timeout 60
 </code></pre>
 
 <p>如果你的命令需要很长时间的话可以加上timeout 60这样的设置（参考<a href="http://munin-monitoring.org/wiki/plugin-conf.d">http://munin-monitoring.org/wiki/plugin-conf.d</a>）</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[setup munin and plugins]]></title>
-    <link href="http://huangxiangdan.github.io/blog/2013/08/27/setup-munin-and-plugins/"/>
-    <updated>2013-08-27T05:18:00+08:00</updated>
-    <id>http://huangxiangdan.github.io/blog/2013/08/27/setup-munin-and-plugins</id>
-    <content type="html"><![CDATA[<h1>系统环境</h1>
-
-<p>Ubuntu 12.04</p>
-
-<h1>安装munin</h1>
-
-<h2>安装munin-node</h2>
-
-<p>sudo apt-get install munin-node</p>
-
-<h2>安装munin server</h2>
-
-<p>sudo apt-get install munin</p>
-
-<h1>基础配置</h1>
-
-<h2>munin-node 配置</h2>
-
-<h3>配置文件地址</h3>
-
-<p>/etc/munin/munin-node.conf</p>
-
-<h3>需要修改的地方</h3>
-
-<p>配置文件为 /etc/munin/munin-node.conf 添加上master的ip地址，添加字段为如下，添加地方为 allow ^127.0.0.1$ 的后面。allow支持正则表达式</p>
-
-<pre><code>allow ^124\.232\.156\.224$
-</code></pre>
-
-<h2>munin server 配置</h2>
-
-<h3>配置文件地址</h3>
-
-<p>/etc/munin/munin.conf</p>
-
-<h3>需要修改的地方</h3>
-
-<p>添加如下客户端的信息,内容如下,如果有多个node，加入多个node的相关信息即可。web;web1代表的是web组，web1服务器</p>
-
-<pre><code>[web;web1]
-address 127.0.0.1
-use_node_name yes
-
-[lvs;lvs1]
-address 192.168.1.30
-use_node_name yes
-</code></pre>
-
-<h3>为munin server配置nginx路径</h3>
-
-<pre><code>server {
-  listen 80;
-  server_name munin.yitu.me;
-  expires off;
-  auth_basic "Munin";
-  auth_basic_user_file /var/cache/munin/htpasswd;
-  root /var/cache/munin/www;
-  }
-</code></pre>
-
-<p>先使用</p>
-
-<pre><code>htpasswd -c /var/cache/munin/htpasswd admin 
-</code></pre>
-
-<p>命令生成htpasswd文件，如果不存在htpasswd命令，先安装</p>
-
-<pre><code>apt-get install mini-httpd
-</code></pre>
-
-<p>打开地址 http://munin.xx.xx(自己在nginx里配置的地址，前提是先把dns转过来) 就可以看到被监控节点的信息了</p>
-
-<h1>munin服务启动</h1>
-
-<h2>munin-node</h2>
-
-<pre><code>service munin-node start
-</code></pre>
-
-<h2>munin server</h2>
-
-<p>munin server 不需要启动，是通过cron job的方式去抓取信息的，安装成功之后就已经有了，不需要启动。可以通过</p>
-
-<pre><code>munin-check
-</code></pre>
-
-<p>来检查配置是否正确</p>
-
-<h1>munin 基础知识</h1>
-
-<ol>
-<li><p>munin会使用munin这个用户运行munin相关的命令，所以有时候可以通过切换到munin用户debug</p>
-
-<pre><code> su munin --shell=/bin/bash
-</code></pre></li>
-<li><p>munin用到的路径地址</p>
-
-<pre><code> # dbdir /var/lib/munin
- # htmldir /var/cache/munin/www
- # logdir /var/log/munin
- # rundir  /var/run/munin
- # plugins /var/etc/munin/plugins
-</code></pre></li>
-</ol>
-
-
-<h1>插件配置</h1>
-
-<h2>基础配置增强</h2>
-
-<pre><code>sudo apt-get install munin-plugins-extra
-</code></pre>
-
-<h2>安装passenger插件</h2>
-
-<pre><code>mkdir munin &amp;&amp; cd munin &amp;&amp; git clone https://github.com/huangxiangdan/munin-plugins-rails.git
-cd munin-plugins-rails/ &amp;&amp; gem install munin-plugins-rails-0.2.12.gem
-rvmsudo request-log-analyzer-munin install
-rvmsudo request-log-analyzer-munin add &lt;app_name&gt; &lt;path_to_log_file&gt;
-</code></pre>
 ]]></content>
   </entry>
   
