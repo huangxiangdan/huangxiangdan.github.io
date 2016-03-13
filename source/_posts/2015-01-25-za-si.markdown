@@ -3,5 +3,6 @@ layout: post
 title: "杂思"
 date: 2015-01-25 08:33
 comments: true
+published: false
 categories: 
 ---
