@@ -76,7 +76,7 @@
     </url>
     <url>
         <loc>http://huangxiangdan.github.io/blog/2013/10/18/add-munin-plugins/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
+        <lastmod>2016-09-21T19:24:11+08:00</lastmod>
     </url>
     <url>
         <loc>http://huangxiangdan.github.io/blog/2013/10/18/setup-munin-notification/</loc>
@@ -149,11 +149,15 @@
         <lastmod>2016-03-14T06:45:03+08:00</lastmod>
     </url>
     <url>
+        <loc>http://huangxiangdan.github.io/blog/2016/09/20/deeplink/</loc>
+        <lastmod>2016-09-21T19:21:49+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://huangxiangdan.github.io/blog/archives/</loc>
-        <lastmod>2016-03-14T06:45:03+08:00</lastmod>
+        <lastmod>2016-09-21T19:24:11+08:00</lastmod>
     </url>
     <url>
         <loc>http://huangxiangdan.github.io/</loc>
-        <lastmod>2016-03-14T06:45:03+08:00</lastmod>
+        <lastmod>2016-09-21T19:24:11+08:00</lastmod>
     </url>
 </urlset>
