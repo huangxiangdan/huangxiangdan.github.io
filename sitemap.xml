@@ -1,163 +1,174 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2012/03/03/hack-12306/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2012/03/15/deploy-ejabberd/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2012/03/25/next-month-plan_2012-03/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2012/03/26/ejabberd_ruby_auth/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2012/06/07/plan_2012-6/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2012/06/10/exist-life/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2012/06/15/manila/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2012/06/18/blog-at-service/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2012/06/19/this-year/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2012/06/20/plan-2012-7-8/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2012/06/27/facebook-menude-androidshi-xian/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2012/07/01/self-redemption/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://huangxiangdan.github.io/blog/2012/08/03/ti-xing-zi-ji-zhu-yi-de-shi-qing/
-        </loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2012/09/22/what-are-you-work-for/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2013/07/28/something-wrong-in-my-life-now/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2013/08/16/thinking-in-code/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2013/08/22/my-get-up-early-trial/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2013/08/27/setup-munin-and-plugins/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2013/10/18/add-munin-plugins/</loc>
-        <lastmod>2016-09-21T19:24:11+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2013/10/18/setup-munin-notification/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://huangxiangdan.github.io/blog/2013/11/27/support-emoji-in-rails-3-dot-2-14/
-        </loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2013/11/30/an-advise-to-the-new-staff/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2013/11/30/be-asynchronous/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2013/11/30/what-we-really-care/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2013/12/03/something-about-probability/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://huangxiangdan.github.io/blog/2013/12/04/splitting-a-fat-model-into-multiple-files/
-        </loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://huangxiangdan.github.io/blog/2013/12/05/the-first-thing-of-how-we-protect-our-marriage/
-        </loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2014/01/03/2013-summary/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2014/01/08/chat-server-performance-tune/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2014/03/31/a-new-day/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2014/04/12/those-things/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2014/11/28/about-this-time/</loc>
-        <lastmod>2014-11-29T03:48:19+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2015/02/18/2014-summary/</loc>
-        <lastmod>2015-02-18T23:08:43+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2015/02/18/for-the-idealist/</loc>
-        <lastmod>2015-02-20T04:58:42+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2016/03/14/hi-there/</loc>
-        <lastmod>2016-03-14T06:45:03+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/2016/09/20/deeplink/</loc>
-        <lastmod>2016-09-21T19:21:49+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/blog/archives/</loc>
-        <lastmod>2016-09-21T19:24:11+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://huangxiangdan.github.io/</loc>
-        <lastmod>2016-09-21T19:24:11+08:00</lastmod>
-    </url>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>http://huangxiangdan.github.io/blog/2016/09/20/deeplink/</loc>
+<lastmod>2016-09-20T17:43:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2016/03/14/hi-there/</loc>
+<lastmod>2016-03-14T06:14:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2015/02/18/for-the-idealist/</loc>
+<lastmod>2015-02-18T23:17:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2015/02/18/2014-summary/</loc>
+<lastmod>2015-02-18T21:30:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2014/11/28/about-this-time/</loc>
+<lastmod>2014-11-28T23:22:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2014/04/12/those-things/</loc>
+<lastmod>2014-04-12T09:05:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2014/03/31/a-new-day/</loc>
+<lastmod>2014-03-31T18:10:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2014/01/08/chat-server-performance-tune/</loc>
+<lastmod>2014-01-08T08:48:28+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2014/01/03/2013-summary/</loc>
+<lastmod>2014-01-03T06:28:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2013/12/05/the-first-thing-of-how-we-protect-our-marriage/</loc>
+<lastmod>2013-12-05T15:23:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2013/12/04/splitting-a-fat-model-into-multiple-files/</loc>
+<lastmod>2013-12-04T18:07:10+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2013/12/03/something-about-probability/</loc>
+<lastmod>2013-12-03T06:25:41+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2013/11/30/what-we-really-care/</loc>
+<lastmod>2013-11-30T09:13:54+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2013/11/30/be-asynchronous/</loc>
+<lastmod>2013-11-30T07:53:57+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2013/11/30/an-advise-to-the-new-staff/</loc>
+<lastmod>2013-11-30T06:43:21+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2013/11/27/support-emoji-in-rails-3-dot-2-14/</loc>
+<lastmod>2013-11-27T09:29:23+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2013/10/18/setup-munin-notification/</loc>
+<lastmod>2013-10-18T12:45:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2013/10/18/add-munin-plugins/</loc>
+<lastmod>2013-10-18T11:50:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2013/08/27/setup-munin-and-plugins/</loc>
+<lastmod>2013-08-27T05:18:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2013/08/22/my-get-up-early-trial/</loc>
+<lastmod>2013-08-22T05:21:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2013/08/16/thinking-in-code/</loc>
+<lastmod>2013-08-16T11:13:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2013/07/28/something-wrong-in-my-life-now/</loc>
+<lastmod>2013-07-28T19:25:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2012/09/22/what-are-you-work-for/</loc>
+<lastmod>2012-09-22T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2012/08/03/ti-xing-zi-ji-zhu-yi-de-shi-qing/</loc>
+<lastmod>2012-08-03T16:08:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2012/07/01/self-redemption/</loc>
+<lastmod>2012-07-01T23:19:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2012/06/27/facebook-menude-androidshi-xian/</loc>
+<lastmod>2012-06-27T18:20:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2012/06/20/plan-2012-7-8/</loc>
+<lastmod>2012-06-20T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2012/06/19/this-year/</loc>
+<lastmod>2012-06-19T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2012/06/18/blog-at-service/</loc>
+<lastmod>2012-06-18T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2012/06/15/manila/</loc>
+<lastmod>2012-06-15T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2012/06/10/exist-life/</loc>
+<lastmod>2012-06-10T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2012/06/07/plan_2012-6/</loc>
+<lastmod>2012-06-07T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2012/03/26/ejabberd_ruby_auth/</loc>
+<lastmod>2012-03-26T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2012/03/25/next-month-plan_2012-03/</loc>
+<lastmod>2012-03-25T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2012/03/15/deploy-ejabberd/</loc>
+<lastmod>2012-03-15T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2012/03/03/hack-12306/</loc>
+<lastmod>2012-03-03T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/archives/</loc>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/</loc>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/categories/work/</loc>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/categories/rails/</loc>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/categories/interesting/</loc>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/categories/marriage/</loc>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/categories/summary/</loc>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/categories/share/</loc>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/categories/gan-wu/</loc>
+</url>
 </urlset>

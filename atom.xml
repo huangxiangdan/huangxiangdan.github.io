@@ -4,7 +4,7 @@
   <title><![CDATA[Stoned's Blog]]></title>
   <link href="http://huangxiangdan.github.io/atom.xml" rel="self"/>
   <link href="http://huangxiangdan.github.io/"/>
-  <updated>2016-03-14T06:58:38+08:00</updated>
+  <updated>2016-09-21T19:45:58+08:00</updated>
   <id>http://huangxiangdan.github.io/</id>
   <author>
     <name><![CDATA[Stoned]]></name>
@@ -14,7 +14,81 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Hi there]]></title>
+    <title type="html"><![CDATA[Deeplink]]></title>
+    <link href="http://huangxiangdan.github.io/blog/2016/09/20/deeplink/"/>
+    <updated>2016-09-20T17:43:00+08:00</updated>
+    <id>http://huangxiangdan.github.io/blog/2016/09/20/deeplink</id>
+    <content type="html"><![CDATA[<h2>Deeplink是什么？</h2>
+
+<p>用最通俗的话讲，就是当你打开微信中分享的知乎页面时，点击打开应用按钮，就可以跳转到知乎app相同的内容，如果你没安装知乎，点击打开按钮就会跳转到下载页面，下载完成注册之后，你也可以跳转到之前在网页上看过的页面。下图很好的解释了Deeplink的工作。</p>
+
+<p><img src="http://image.woshipm.com/wp-files/2016/02/Deeplinkingv3.jpg" alt="Deeplink" /></p>
+
+<p> 而作为Deeplink的升级版，Deferred Deeplink更受大家欢迎。两者区别如下：</p>
+
+<p><img src="http://image.woshipm.com/wp-files/2016/02/Deeplinkingv4-512x1024.jpg" alt="Deferred Deeplink" /></p>
+
+<h2>Deeplink如何实现？</h2>
+
+<p>对于mobile app来说，Deeplink的客户端实现包含两种方式</p>
+
+<ul>
+<li>支持iOS9以上的 Universal Links</li>
+<li>传统的URI Scheme</li>
+</ul>
+
+
+<h3>如何实现Universal Links</h3>
+
+<p>Universal Links的工作原理是先向Apple服务器申明要使用什么域名作为Universal Links的域名，在用户安装app之后，系统如果发现<a href="https://%E4%BD%A0%E7%9A%84%E5%9F%9F%E5%90%8D">https://你的域名</a>请求，系统将检查App Links，如果发现注册的app，就会直接打开应用。如果未发现app，就会调用默认的方式打开链接（比如浏览器）。</p>
+
+<p>而实现Universal Links,按照苹果的<a href="https://developer.apple.com/library/content/documentation/General/Conceptual/AppSearch/UniversalLinks.html">指导</a>一步步去做即可。</p>
+
+<h3>如何实现传统的URI Scheme</h3>
+
+<p>URI Scheme 是统一资源标识符（<a href="http://en.wikipedia.org/wiki/Uniform_Resource_Identifier">Uniform Resource Identifier</a> ）的命名结构，就是定义一个资源的。当你的app定义了一个URI Scheme后，就相当于往系统的注册表里加了一行，告诉系统，如果遇到 xxx://yyy（xxx就是你自己定义的URI Scheme），就跳到你的app去做相关的事情。</p>
+
+<p>而iOS和android的URI Scheme实现主要是，</p>
+
+<ol>
+<li>在项目里声明scheme</li>
+<li>在具体的位置根据URI的内容做相应的跳转</li>
+</ol>
+
+
+<h2>有坑吗？</h2>
+
+<p>上面两种实现看起来是不是很简单？如果你以为做完上面两件事情就可以下班走人的话，那只怪你自己too young too simple了。deeplink还需要做到以下事情（踩以下的坑）才能正常工作：</p>
+
+<ol>
+<li>web（h5）页面实现是否已安装app的检测，从而决定是跳转到app，还是跳转到h5页面</li>
+<li>我实现了deeplink，微信（第三方应用）里为什么不跳app？</li>
+<li>为什么有些浏览器检测app是否已安装的代码无效？</li>
+<li>用户通过微信分享本来想看某篇文章的，点击打开app，跳到了app的下载页面，app下载完成之后却没有进入之前看的文章页面。</li>
+</ol>
+
+
+<p>需要做的具体实现如下：</p>
+
+<ol>
+<li>在h5界面兼容各种浏览器的 app检测 js代码</li>
+<li>h5页面针对微信内的下载打开引导（以及在微信里打开app的黑魔法?）</li>
+<li>采集安装前的指纹，实现Deferred Deeplink</li>
+</ol>
+
+
+<h2>看起来好麻烦，有现成的方案吗？</h2>
+
+<p>我们用了<a href="deepshare.io">DeepShare</a>实现的Deferred Deeplink（此处应有广告费，我的微信号huangxiangdan，欢迎给我广告费），基本上在客户端接入api，实现跳转就好了，就不用去做上述那些繁琐的事情了。</p>
+
+<h2>参考资料</h2>
+
+<blockquote><p><a href="http://www.woshipm.com/operate/287961.html">你知道App推广神技“Deferred Deeplink”吗?</a></p></blockquote>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hi There]]></title>
     <link href="http://huangxiangdan.github.io/blog/2016/03/14/hi-there/"/>
     <updated>2016-03-14T06:14:00+08:00</updated>
     <id>http://huangxiangdan.github.io/blog/2016/03/14/hi-there</id>
@@ -31,7 +105,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[for_the_idealist]]></title>
+    <title type="html"><![CDATA[For_the_idealist]]></title>
     <link href="http://huangxiangdan.github.io/blog/2015/02/18/for-the-idealist/"/>
     <updated>2015-02-18T23:17:00+08:00</updated>
     <id>http://huangxiangdan.github.io/blog/2015/02/18/for-the-idealist</id>
@@ -56,9 +130,9 @@
 
 <p>这一两周，天放找我做过1 on 1。主题是14年总结。因为在那之前我花了2个多小时回顾了我的14年经历，所以在跟天放讲时，几乎就是之前总结的复述。2014年能记得的是三件事情: 高考倒计时，社团联盟，导入。这些事情让我印象深刻，它们帮我印证了我自己，帮我树立了我的自信。</p>
 
-<p>高考倒计时是一个一到两周的事情，也是一个最理想化的产品，高考很残酷，也很辛苦，我想做的就是给别人带来一点点关心，一点点触动。高考倒计时很冰冷，只想让它不那么冰冷。这件事情说实话，价值和意义远超我自己的付出。当你看到每天有1000多个人早起签到的时候，你就明白，这努力并不白费。 http://guole.me/leaderboard</p>
+<p>高考倒计时是一个一到两周的事情，也是一个最理想化的产品，高考很残酷，也很辛苦，我想做的就是给别人带来一点点关心，一点点触动。高考倒计时很冰冷，只想让它不那么冰冷。这件事情说实话，价值和意义远超我自己的付出。当你看到每天有1000多个人早起签到的时候，你就明白，这努力并不白费。 <a href="http://guole.me/leaderboard">http://guole.me/leaderboard</a></p>
 
-<p>社团联盟一个有些战略意义的产品，我给它的评价是找到切入点，做出来，站得住脚，这事就及格了。很遗憾，它也只是及格。这件事情，我尽了最大的努力。我是负责人，没有最大化这件事情的影响力，我需要承担责任，但，我真尽力了(I&#8217;m doing my best)。</p>
+<p>社团联盟一个有些战略意义的产品，我给它的评价是找到切入点，做出来，站得住脚，这事就及格了。很遗憾，它也只是及格。这件事情，我尽了最大的努力。我是负责人，没有最大化这件事情的影响力，我需要承担责任，但，我真尽力了(I&rsquo;m doing my best)。</p>
 
 <p>导入，是一个由我起头的项目，我说，由我开始，就由我来结束。3个月，我夸下海口。3个月之后，我放心离开。这件事情还没达到perfect的状态，但75分是有的。很高兴，许多人对这个结果满意。扣掉的25分，多是在时间上。</p>
 
@@ -157,7 +231,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[2013 summary]]></title>
+    <title type="html"><![CDATA[2013 Summary]]></title>
     <link href="http://huangxiangdan.github.io/blog/2014/01/03/2013-summary/"/>
     <updated>2014-01-03T06:28:00+08:00</updated>
     <id>http://huangxiangdan.github.io/blog/2014/01/03/2013-summary</id>
@@ -189,7 +263,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[the first thing of how we protect our marriage]]></title>
+    <title type="html"><![CDATA[The First Thing of How We Protect Our Marriage]]></title>
     <link href="http://huangxiangdan.github.io/blog/2013/12/05/the-first-thing-of-how-we-protect-our-marriage/"/>
     <updated>2013-12-05T15:23:00+08:00</updated>
     <id>http://huangxiangdan.github.io/blog/2013/12/05/the-first-thing-of-how-we-protect-our-marriage</id>
@@ -232,7 +306,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[splitting a fat model into multiple files]]></title>
+    <title type="html"><![CDATA[Splitting a Fat Model Into Multiple Files]]></title>
     <link href="http://huangxiangdan.github.io/blog/2013/12/04/splitting-a-fat-model-into-multiple-files/"/>
     <updated>2013-12-04T18:07:10+08:00</updated>
     <id>http://huangxiangdan.github.io/blog/2013/12/04/splitting-a-fat-model-into-multiple-files</id>
@@ -631,7 +705,7 @@ n   机率
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[an advise to the new staff]]></title>
+    <title type="html"><![CDATA[An Advise to the New Staff]]></title>
     <link href="http://huangxiangdan.github.io/blog/2013/11/30/an-advise-to-the-new-staff/"/>
     <updated>2013-11-30T06:43:21+08:00</updated>
     <id>http://huangxiangdan.github.io/blog/2013/11/30/an-advise-to-the-new-staff</id>
@@ -664,7 +738,7 @@ n   机率
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[support emoji in rails 3.2.14]]></title>
+    <title type="html"><![CDATA[Support Emoji in Rails 3.2.14]]></title>
     <link href="http://huangxiangdan.github.io/blog/2013/11/27/support-emoji-in-rails-3-dot-2-14/"/>
     <updated>2013-11-27T09:29:23+08:00</updated>
     <id>http://huangxiangdan.github.io/blog/2013/11/27/support-emoji-in-rails-3-dot-2-14</id>
@@ -860,11 +934,11 @@ end
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[setup munin notification]]></title>
+    <title type="html"><![CDATA[Setup Munin Notification]]></title>
     <link href="http://huangxiangdan.github.io/blog/2013/10/18/setup-munin-notification/"/>
     <updated>2013-10-18T12:45:00+08:00</updated>
     <id>http://huangxiangdan.github.io/blog/2013/10/18/setup-munin-notification</id>
-    <content type="html"><![CDATA[<p>可参考<a href="http://munin-monitoring.org/wiki/HowToContact">http://munin-monitoring.org/wiki/HowToContact&#8221;</a></p>
+    <content type="html"><![CDATA[<p>可参考<a href="http://munin-monitoring.org/wiki/HowToContact">http://munin-monitoring.org/wiki/HowToContact"</a></p>
 
 <p>在munin.conf中添加</p>
 
@@ -909,9 +983,9 @@ load.load.critical 15
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Add Munin Plugins]]></title>
+    <title type="html"><![CDATA[配置munin插件]]></title>
     <link href="http://huangxiangdan.github.io/blog/2013/10/18/add-munin-plugins/"/>
-    <updated>2013-10-18T00:00:00+08:00</updated>
+    <updated>2013-10-18T11:50:00+08:00</updated>
     <id>http://huangxiangdan.github.io/blog/2013/10/18/add-munin-plugins</id>
     <content type="html"><![CDATA[<p>接上文</p>
 
@@ -977,7 +1051,7 @@ timeout 60
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[setup munin and plugins]]></title>
+    <title type="html"><![CDATA[Setup Munin and Plugins]]></title>
     <link href="http://huangxiangdan.github.io/blog/2013/08/27/setup-munin-and-plugins/"/>
     <updated>2013-08-27T05:18:00+08:00</updated>
     <id>http://huangxiangdan.github.io/blog/2013/08/27/setup-munin-and-plugins</id>
@@ -1051,7 +1125,7 @@ use_node_name yes
 <pre><code>apt-get install mini-httpd
 </code></pre>
 
-<p>打开地址 http://munin.xx.xx(自己在nginx里配置的地址，前提是先把dns转过来) 就可以看到被监控节点的信息了</p>
+<p>打开地址 <a href="http://munin.xx.xx">http://munin.xx.xx</a>(自己在nginx里配置的地址，前提是先把dns转过来) 就可以看到被监控节点的信息了</p>
 
 <h1>munin服务启动</h1>
 
@@ -1116,15 +1190,6 @@ rvmsudo request-log-analyzer-munin add &lt;app_name&gt; &lt;path_to_log_file&gt;
 <p>早起给我带来的最大的好处是帮自己多出了接近三四个小时的时间。帮自己提前进入一个良好的状态。21天，帮自己完美地扛过了工作上的压力。这段时间多了很多时间去陪伴图图。虽然在我无法早起的以后这些福利通通消失了，但至少，我找到了那把<strong>钥匙</strong>。</p>
 
 <p>所以，将早起变成一种习惯，规律生活，修身养性，能给我带来更平和的生活。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[thinking in code]]></title>
-    <link href="http://huangxiangdan.github.io/blog/2013/08/16/thinking-in-code/"/>
-    <updated>2013-08-16T11:13:00+08:00</updated>
-    <id>http://huangxiangdan.github.io/blog/2013/08/16/thinking-in-code</id>
-    <content type="html"><![CDATA[<p>占位</p>
 ]]></content>
   </entry>
   
