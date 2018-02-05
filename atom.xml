@@ -4,7 +4,7 @@
   <title><![CDATA[Stoned's Blog]]></title>
   <link href="http://huangxiangdan.github.io/atom.xml" rel="self"/>
   <link href="http://huangxiangdan.github.io/"/>
-  <updated>2016-09-26T22:38:27+08:00</updated>
+  <updated>2018-02-05T22:04:19+08:00</updated>
   <id>http://huangxiangdan.github.io/</id>
   <author>
     <name><![CDATA[Stoned]]></name>
@@ -12,6 +12,165 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[生日，快乐]]></title>
+    <link href="http://huangxiangdan.github.io/blog/2018/02/05/sheng-ri-,kuai-le/"/>
+    <updated>2018-02-05T19:20:49+08:00</updated>
+    <id>http://huangxiangdan.github.io/blog/2018/02/05/sheng-ri-,kuai-le</id>
+    <content type="html"><![CDATA[<p>今天是你的生日，没有你的提醒，我也记不起。因为提前跟你确定了生日礼物，就好像你的生日已经提前过完了一样。但我知道不是这样的，也不该这样，然而你人又不在北京，相隔老远可能最好的方式是给你写点东西。</p>
+
+<p>要搁以前，我可能给你写点诗，诗虽短小，但情感充沛。但是现在手法生疏，表达不畅，诗怕是写不了了。所以只能给你写点普普通通的文字。</p>
+
+<p>文字虽不好听，也不好看。但文字平实，平实有平实的力量，一如我们的生活。</p>
+
+<p>明年就是我们大学毕业十年的时间了，我们约了明年回学校看看。刚毕业时肯定不会想到，十年就这么过来了。十年时间，不敢说弹指一瞬，但时间就像慢慢悠悠的牛车，愣是把我们从成都驮到了北京，回头一看，那些走过的路，不多不少，恰十年。</p>
+
+<p>一两年前刚三十的时候，心中常常有些忐忑，仿佛进了考场，提笔答卷，也不知道自己考得怎么样。但最近，尤其是今年以来常常忘了自己的年龄，只记得已而立，到底是三十出头还是三十末尾，好像已不再重要。今年以来，不知是做老柚的缘故，还是年龄渐长，对一些以前不在意的事情，以前不理解的事情有了新的感想，于是今年开始带着图图启程百城计划，那些一座座陌生的城市，那些一个个只在书里或者新闻里出现的地名，我都想带着图图走过、看过。那些看起来和我们毫无瓜葛的地方，我都想和他们建立联系，因为这都是中国。和你关系最紧密又最陌生的东西，一如我们的生活。</p>
+
+<p>做老柚，以前和人说老柚解决的是中年人孤独的痛点，以前是半懂，现在我想我已懂一大半。不知从什么时候起，因工作太忙，我就不在家吃晚饭了，回去也晚，几乎都是回去就快睡觉。后来公司晚饭吃的早，回去就快饿了，于是开始点些外卖回家吃。有些时候，你们睡了，我一个人吃点东西，喝点东西，夜深人静。后来在公司，我和同事说，我终于理解了，回到老家，为什么我妈总要叫我陪她喝酒了。这孤独，不紧不慢，跟着时间，终将与你相遇。</p>
+
+<p>今年的绝大部分时间，你都是在家忙碌，陪着夭夭成长，伴着图图长大。我知道，这可能是你过得最辛苦的一年，你的无处安放的焦虑不停的在啃食你的耐心。我非常理解你的焦虑，非常希望你可以战胜它，但我知道我不是一个好的伴侣，我不够耐心，也不够贴心，一如缺乏对图图的耐心一样。所以，我很钦佩和感激你在图图身上所体现的耐心，虽然这过程总是伴随着痛苦与绝望，但你和图图都在进步。反倒是我，没什么长进。</p>
+
+<p>我不知道你是否和我一样，也曾感受到孤独，孤独也好，焦虑也罢，如生活里其他的东西一样，伴随着生活，又是生活本身。</p>
+
+<p>生活就像打翻的调味盒，混沌、无序，却又酸甜苦辣。可我爱这该死的生活，一如爱你。</p>
+
+<p>生日，快乐。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[增长黑客之防御术]]></title>
+    <link href="http://huangxiangdan.github.io/blog/2017/08/19/zeng-chang-hei-ke-zhi-fang-yu-zhu/"/>
+    <updated>2017-08-19T11:06:35+08:00</updated>
+    <id>http://huangxiangdan.github.io/blog/2017/08/19/zeng-chang-hei-ke-zhi-fang-yu-zhu</id>
+    <content type="html"><![CDATA[<p>在犬校里见了不少被攻击的例子，有些我经历过，有些我也对其他人用过。其实很多时候，稍微了解一些，在设计与开发时，略加注意，提前预防，就能避免遭受类似的攻击。（以下内容针对App的攻防）</p>
+
+<p>给大家讲具体的方法之前，需要先对大家普及一下一些基本的概念。</p>
+
+<p>唯一标识 （unique identifier）。我们会用一些唯一标识来区分不同的用户，常用的唯一标识有</p>
+
+<ul>
+<li>UserId，自己产品的用户id</li>
+<li>OpenId, 第三方产品的唯一用户id，比如微信的openid。</li>
+<li>IMEI，每个手机都会有不同的IMEI，所以IMEI可以用来标识设备是否相同。（苹果因为禁止获取IMEI，但仍有办法获得类似的标识）。ps：忽略山寨机，12年左右山寨机比较多，好多imei是相同的，但现在极少有imei相同的手机了。</li>
+<li>手机号，通过验证的手机号。</li>
+<li>IP，ip不算是唯一标识，因为一个局域网的用户可以使用相同ip进行登录或者操作，但ip仍可作为一个有效的手段来区分是个体用户还是组团用户。</li>
+<li>token，因为http是无状态的，这意味着每个请求都是独立的，所以你不能因为用户的上一个请求通过登录了，下一个请求就不检验这个用户是否合法。因此会用token来代表用户的合法性。</li>
+<li>签名，我们知道文件下载的时候会检验下载下来的文件签名是否与官方公布的文件签名是否一致，这样就可以避免文件被篡改或者下载不完整。同样的，我们也可以用签名来验证一个客户端api请求的合法性。</li>
+</ul>
+
+
+<p>攻击（attack）。攻击一般分两种，非法攻击与合理攻击。两者的区别在于是否篡改app设计的功能行为。所以举个例子，合理攻击包括</p>
+
+<ul>
+<li>组织1000个人，每人操作10个手机，定点（比如晚上9点）使用app的上传视频功能，结果服务器搞崩了几个小时。</li>
+<li>通过抓包的方式，发现正常请求一个用户的信息的时候，会泄露这个人的密码等隐私信息（虽然没展现在界面上），所以你通过这个办法获取到了某个重要人物的密码，登录他的账号后，给他传了一些不可描述的视频&hellip;</li>
+<li>人为上传敏感视频或内容&hellip;</li>
+</ul>
+
+
+<p>一般可以进行合理攻击的原因都在于产品/接口设计缺陷，在设计实施时有意识想想这块问题，基本都能避免。所以后面我们主要针对非法攻击这块。</p>
+
+<p>刚才给非法攻击下了一个定义，非法攻击是指篡改了app原本的功能行为的攻击行为，所以，既然与原本的app行为不一致，那很明显，这种攻击是指有人通过代码/工具模拟或篡改app行为，所以这种攻击一般具有以下特征：</p>
+
+<ul>
+<li>高频</li>
+<li>大量请求</li>
+<li>集中，所有请求通过某一UserId或者某一IP或者某一IMEI发起。</li>
+</ul>
+
+
+<p>既然我们知道了非法攻击的定义与特征，有什么办法可以避免呢？换言之，有什么办法可以避免别人模拟或篡改app行为呢？其实答案也很简单，那就是</p>
+
+<ul>
+<li>不让其他人发现app行为背后的请求与逻辑</li>
+<li>对每个用户请求采用签名验证，拒绝伪造请求。</li>
+<li>如果还没办法做到前两项，那么还能根据非法攻击的特征进行预防。</li>
+</ul>
+
+
+<p>不让其他人发现app行为背后的请求与逻辑，指的是对外界可见的各个层面进行保密/加密，比较常见的办法有</p>
+
+<ol>
+<li>android混淆</li>
+<li>android加固/加壳</li>
+<li>重要参数与方法用native的方式写成so，比如key与加密的方法</li>
+<li><strong>HTTPS + pinning</strong></li>
+<li>接口级别加密</li>
+</ol>
+
+
+<p>前三条比较常见，大部分公司都是这么做的，第四条做到的公司不是太多。第四条的核心目的是为了防抓包，也就是说当别人无法通过反编译或者抓包获取你的api方法与参数时，大部分的攻击方法就会失效。但许多公司只上了HTTPS，却没有开pinning。</p>
+
+<p>划重点</p>
+
+<p><strong>请让你的工程师开启HTTPS + pinning</strong></p>
+
+<p><strong>请让你的工程师开启HTTPS + pinning</strong></p>
+
+<p><strong>请让你的工程师开启HTTPS + pinning</strong></p>
+
+<p>这一条简单有效的办法可以在创业中前期（百万之前吧）避开各种蛇虫鼠蚁。</p>
+
+<p>第五条就是比较变态了，有利有弊，弊端是工程师沟通成本、debug成本会增加，优势是接口加密级别提升不少，但个人不太建议这么做，原因是当你做好前4条之后，破解难度已经很高了，大部分人无法突破前四道防线。而能突破前四条防线的人，估计也能突破第五条防线&hellip;</p>
+
+<p>当你的app加密级别比较高，相当于你给自己设了一道暗门，只有你自己知道入口在哪里，其他人根本找不到你的入口。虽然这个办法很好，可是你心理还是嘀咕，万一，真的要是万一别人知道了你的暗门，轻轻一推就能进来了，这是不是太不安全了。那好，那就给你的暗门再装一道人脸识别的开关吧，这下除了你之外就没人能进来了。</p>
+
+<p>对于app而言，这人脸识别就是对每个请求采用签名验证。</p>
+
+<p>签名验证的基本原理是只有你自己知道加密秘钥与加密方法，所以你可以对每一个请求进行签名计算，服务器根据传上来的签名进行校验，如果签名有效，就转去相应的逻辑处理，如果签名无效，就直接拒绝请求。</p>
+
+<p>对于签名机制的设计，最好考虑到以下几点：</p>
+
+<ol>
+<li>对签名加上时间戳，这样可以保证每个请求的签名都不一样</li>
+<li>对签名的内容加上用户相关的信息，比如token</li>
+<li>对签名进行检查，同一合法的签名只允许通过一次，这样可以防御别人发起DDOS攻击。</li>
+<li>请为签名秘钥添加版本管理，避免秘钥泄露带来的秘钥更换的问题。</li>
+<li>注意在客户端保护签名秘钥与签名方法，请参见『增长黑客之防御术2』</li>
+</ol>
+
+
+<p>划重点：</p>
+
+<p>请开启<strong>HTTPS + pinning</strong>，以及采取<strong>签名验证</strong></p>
+
+<p>请开启<strong>HTTPS + pinning</strong>，以及采取<strong>签名验证</strong></p>
+
+<p>请开启<strong>HTTPS + pinning</strong>，以及采取<strong>签名验证</strong></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[2016年终总结]]></title>
+    <link href="http://huangxiangdan.github.io/blog/2017/02/03/2016nian-zhong-zong-jie/"/>
+    <updated>2017-02-03T07:38:01+08:00</updated>
+    <id>http://huangxiangdan.github.io/blog/2017/02/03/2016nian-zhong-zong-jie</id>
+    <content type="html"><![CDATA[<p>2016，thank god，终于有了立身之地。</p>
+
+<p>想起2016，总会想到2016年初的时候，那时带着家人在三亚度假，偶遇其他团队在沙滩，心里无比向往，那个时候感慨道，『什么时候，我也可以带着我的团队来这里TB』。2016已经过去，即使还没有带我的团队前往三亚，但，我有了我的团队，我有了2017可以拼搏的事业，这让我无比感激2016。</p>
+
+<p>2016是我印象深刻的一年，我从年初的迷茫、徘徊，到年末的自信、甚至有些自大，再到现在的挫败感，仿佛2016坐了一个落差极大的过山车，等车停下，心有余悸戚戚焉，心里感慨『Thank god，车没翻，2017还有的玩』</p>
+
+<p>2016初，我决定结束自15年9月开始的无业状态，寻找我人生新的变量。经卫杰介绍，来到了映客，因为这是唯一一个给我独立空间发展的团队。在2016年的年末，我和焕德，文业说起，心里最想说的一句话就是『我终于挺过来了，现在回头想想，还会有点后怕』从员工到创业者，从技术到产品，从技术Lead到业务负责人，这一年经历了太多角色变换，好在这一切都顺利过来了，我终于上了创业的岸，感谢2016，感谢映客。</p>
+
+<p>2016也经历了许多起伏，去映客后，先做的三秋，结果不到四月，三秋卒。8月开始做老柚，经历一些坎坷，也算过来了，所以感谢2016给2017打了一个好的基础，2017可以直接扬帆起航，而不用伐树造船。所以，纵使2016曾有高光时刻，但2017已复归原位。2017，从零出发。</p>
+
+<p>从零出发的2017会有一些期待</p>
+
+<ol>
+<li>做一个break even的业务</li>
+<li>做一家独立的公司</li>
+<li>在distribution上没有盲区</li>
+<li>solid team</li>
+</ol>
+
+
+<p>感谢2016，给我创造了起跑的条件，还给我带来了小女儿幺幺。所以，爱你，2016。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[写给我未来的女儿]]></title>
@@ -957,251 +1116,6 @@ end
 <li><a href="http://blog.sosedoff.com/2012/04/26/emoji-and-rails-json-output-issue/">Emoji and Rails JSON output issue</a></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Setup Munin Notification]]></title>
-    <link href="http://huangxiangdan.github.io/blog/2013/10/18/setup-munin-notification/"/>
-    <updated>2013-10-18T12:45:00+08:00</updated>
-    <id>http://huangxiangdan.github.io/blog/2013/10/18/setup-munin-notification</id>
-    <content type="html"><![CDATA[<p>可参考<a href="http://munin-monitoring.org/wiki/HowToContact">http://munin-monitoring.org/wiki/HowToContact"</a></p>
-
-<p>在munin.conf中添加</p>
-
-<pre><code>contact.me.command mail -s "Munin-notification for ${var:group} :: ${var:host}" xd_huang1986@163.com
-contact.me.always_send warning critical
-</code></pre>
-
-<p>可修改邮件的内容，添加上下面所列的即可</p>
-
-<pre><code>contact.me.text  &lt;munin group="${var:group}" host="${var:host}"\
-graph_category="${var:graph_category}" graph_title="${var:graph_title}" &gt;\
-${loop&lt; &gt;:wfields &lt;warning label="${var:label}" value="${var:value}"\
-w="${var:wrange}" c="${var:crange}" extra="${var:extinfo}" /&gt; }\
-${loop&lt; &gt;:cfields &lt;critical label="${var:label}" value="${var:value}"\
-w="${var:wrange}" c="${var:crange}" extra="${var:extinfo}" /&gt; }\
-${loop&lt; &gt;:ufields &lt;unknown label="${var:label}" value="${var:value}"\
-w="${var:wrange}" c="${var:crange}" extra="${var:extinfo}" /&gt; }\
-&lt;/munin&gt;
-</code></pre>
-
-<p>可以在某一个host上添加上</p>
-
-<pre><code>cpu.user.warning 20
-</code></pre>
-
-<p>进行测试，这样一旦cpu达到20，就会触发报警信息。可在每一个host下加上预警的数值</p>
-
-<pre><code>[chat;web2]
-address 192.168.1.3
-use_node_name yes
-load.load.warning 6
-load.load.critical 15
-</code></pre>
-
-<p>如果想添加短信提醒，可以开通短信服务，比如<a href="http://ipyy.net/">http://ipyy.net/</a>。然后在配置文件中添加</p>
-
-<pre><code>contact.sms.command curl "http://ipyy.net/WS/Send.aspx?xxxxxxxx"
-</code></pre>
-
-<p>xxxxxx可参考短信服务提供的接口。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[配置munin插件]]></title>
-    <link href="http://huangxiangdan.github.io/blog/2013/10/18/add-munin-plugins/"/>
-    <updated>2013-10-18T11:50:00+08:00</updated>
-    <id>http://huangxiangdan.github.io/blog/2013/10/18/add-munin-plugins</id>
-    <content type="html"><![CDATA[<p>接上文</p>
-
-<h2>安装ejabberd插件</h2>
-
-<p>可参考<a href="http://dev.groupdock.com/2010/10/05/monitoring-ejabberd-with-munin.html">http://dev.groupdock.com/2010/10/05/monitoring-ejabberd-with-munin.html</a>
-具体步骤是：</p>
-
-<ol>
-<li><p>创建具体监控的软链接</p>
-
-<pre><code> sudo ln -s /usr/share/munin/plugins/ejabberd_ /etc/munin/plugins/ejabberd_users
-</code></pre></li>
-<li><p>配置ejabberd配置文件(/etc/munin/plugin-conf.d/munin-node.conf)</p>
-
-<pre><code> [ejabberd_users]
- user root
-
- [ejabberd_*]
- env.vhosts yourhost.com
-</code></pre></li>
-<li>可通过sudo munin-run ejabberd_users（因为你的users是root，所以必须用sudo）进行测试</li>
-<li>理论上这样就可以搞定了，但因为插件的更新速度更不上ejabberd的更新速度，所有很有可能不能用。以ejabberd_users为例，实际上munin只需要你运行/sbin/ejabberdctl connected_users_number，然后把值传给它，所以如果碰到问题，可以查看ejabberd_的代码，修改成合适的样子。
-
-<h2>监控某个端口的连接数</h2>
-
-<pre><code> ln -s /usr/share/munin/plugins/port_ /etc/munin/plugins/port_5222
-</code></pre></li>
-</ol>
-
-
-<h2>自定义munin插件</h2>
-
-<p>可参考<a href="http://munin-monitoring.org/wiki/HowToWritePlugins">http://munin-monitoring.org/wiki/HowToWritePlugins</a></p>
-
-<p>就像下面这个样子（你可以用任意语言来写），你就可以搞定了</p>
-
-<pre><code>#!/bin/sh
-
-case $1 in
-   config)
-        cat &lt;&lt;'EOM'
-graph_title Load average
-graph_vlabel load
-load.label load
-EOM
-        exit 0;;
-esac
-
-echo -n "load.value "
-cut -d' ' -f2  /proc/loadavg
-</code></pre>
-
-<p>如果有权限问题，需要用root运行的话，可以在/etc/munin/plugin-conf.d/munin-node.conf中配置好所需要的用户，比如</p>
-
-<pre><code>[ejabberd_users]
-user root
-timeout 60
-</code></pre>
-
-<p>如果你的命令需要很长时间的话可以加上timeout 60这样的设置（参考<a href="http://munin-monitoring.org/wiki/plugin-conf.d">http://munin-monitoring.org/wiki/plugin-conf.d</a>）</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Setup Munin and Plugins]]></title>
-    <link href="http://huangxiangdan.github.io/blog/2013/08/27/setup-munin-and-plugins/"/>
-    <updated>2013-08-27T05:18:00+08:00</updated>
-    <id>http://huangxiangdan.github.io/blog/2013/08/27/setup-munin-and-plugins</id>
-    <content type="html"><![CDATA[<h1>系统环境</h1>
-
-<p>Ubuntu 12.04</p>
-
-<h1>安装munin</h1>
-
-<h2>安装munin-node</h2>
-
-<p>sudo apt-get install munin-node</p>
-
-<h2>安装munin server</h2>
-
-<p>sudo apt-get install munin</p>
-
-<h1>基础配置</h1>
-
-<h2>munin-node 配置</h2>
-
-<h3>配置文件地址</h3>
-
-<p>/etc/munin/munin-node.conf</p>
-
-<h3>需要修改的地方</h3>
-
-<p>配置文件为 /etc/munin/munin-node.conf 添加上master的ip地址，添加字段为如下，添加地方为 allow ^127.0.0.1$ 的后面。allow支持正则表达式</p>
-
-<pre><code>allow ^124\.232\.156\.224$
-</code></pre>
-
-<h2>munin server 配置</h2>
-
-<h3>配置文件地址</h3>
-
-<p>/etc/munin/munin.conf</p>
-
-<h3>需要修改的地方</h3>
-
-<p>添加如下客户端的信息,内容如下,如果有多个node，加入多个node的相关信息即可。web;web1代表的是web组，web1服务器</p>
-
-<pre><code>[web;web1]
-address 127.0.0.1
-use_node_name yes
-
-[lvs;lvs1]
-address 192.168.1.30
-use_node_name yes
-</code></pre>
-
-<h3>为munin server配置nginx路径</h3>
-
-<pre><code>server {
-  listen 80;
-  server_name munin.yitu.me;
-  expires off;
-  auth_basic "Munin";
-  auth_basic_user_file /var/cache/munin/htpasswd;
-  root /var/cache/munin/www;
-  }
-</code></pre>
-
-<p>先使用</p>
-
-<pre><code>htpasswd -c /var/cache/munin/htpasswd admin 
-</code></pre>
-
-<p>命令生成htpasswd文件，如果不存在htpasswd命令，先安装</p>
-
-<pre><code>apt-get install mini-httpd
-</code></pre>
-
-<p>打开地址 <a href="http://munin.xx.xx">http://munin.xx.xx</a>(自己在nginx里配置的地址，前提是先把dns转过来) 就可以看到被监控节点的信息了</p>
-
-<h1>munin服务启动</h1>
-
-<h2>munin-node</h2>
-
-<pre><code>service munin-node start
-</code></pre>
-
-<h2>munin server</h2>
-
-<p>munin server 不需要启动，是通过cron job的方式去抓取信息的，安装成功之后就已经有了，不需要启动。可以通过</p>
-
-<pre><code>munin-check
-</code></pre>
-
-<p>来检查配置是否正确</p>
-
-<h1>munin 基础知识</h1>
-
-<ol>
-<li><p>munin会使用munin这个用户运行munin相关的命令，所以有时候可以通过切换到munin用户debug</p>
-
-<pre><code> su munin --shell=/bin/bash
-</code></pre></li>
-<li><p>munin用到的路径地址</p>
-
-<pre><code> # dbdir /var/lib/munin
- # htmldir /var/cache/munin/www
- # logdir /var/log/munin
- # rundir  /var/run/munin
- # plugins /var/etc/munin/plugins
-</code></pre></li>
-</ol>
-
-
-<h1>插件配置</h1>
-
-<h2>基础配置增强</h2>
-
-<pre><code>sudo apt-get install munin-plugins-extra
-</code></pre>
-
-<h2>安装passenger插件</h2>
-
-<pre><code>mkdir munin &amp;&amp; cd munin &amp;&amp; git clone https://github.com/huangxiangdan/munin-plugins-rails.git
-cd munin-plugins-rails/ &amp;&amp; gem install munin-plugins-rails-0.2.12.gem
-rvmsudo request-log-analyzer-munin install
-rvmsudo request-log-analyzer-munin add &lt;app_name&gt; &lt;path_to_log_file&gt;
-</code></pre>
 ]]></content>
   </entry>
   

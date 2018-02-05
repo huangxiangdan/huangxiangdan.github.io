@@ -1,0 +1,322 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>增长黑客之防御术 - Stoned's Blog</title>
+  <meta name="author" content="Stoned">
+
+  
+  <meta name="description" content="在犬校里见了不少被攻击的例子，有些我经历过，有些我也对其他人用过。其实很多时候，稍微了解一些，在设计与开发时，略加注意，提前预防，就能避免遭受类似的攻击。（以下内容针对App的攻防） 给大家讲具体的方法之前，需要先对大家普及一下一些基本的概念。 唯一标识 （unique identifier）。 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://huangxiangdan.github.io/blog/2017/08/19/zeng-chang-hei-ke-zhi-fang-yu-zhu/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Stoned's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Stoned's Blog</a></h1>
+  
+    <h2>A startup hacker.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss email">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+    <li><a href="xd_huang1986@163.com" rel="subscribe-email" title="subscribe via email">Email</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="huangxiangdan.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">增长黑客之防御术</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-08-19T11:06:35+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>11:06 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>在犬校里见了不少被攻击的例子，有些我经历过，有些我也对其他人用过。其实很多时候，稍微了解一些，在设计与开发时，略加注意，提前预防，就能避免遭受类似的攻击。（以下内容针对App的攻防）</p>
+
+<p>给大家讲具体的方法之前，需要先对大家普及一下一些基本的概念。</p>
+
+<p>唯一标识 （unique identifier）。我们会用一些唯一标识来区分不同的用户，常用的唯一标识有</p>
+
+<ul>
+<li>UserId，自己产品的用户id</li>
+<li>OpenId, 第三方产品的唯一用户id，比如微信的openid。</li>
+<li>IMEI，每个手机都会有不同的IMEI，所以IMEI可以用来标识设备是否相同。（苹果因为禁止获取IMEI，但仍有办法获得类似的标识）。ps：忽略山寨机，12年左右山寨机比较多，好多imei是相同的，但现在极少有imei相同的手机了。</li>
+<li>手机号，通过验证的手机号。</li>
+<li>IP，ip不算是唯一标识，因为一个局域网的用户可以使用相同ip进行登录或者操作，但ip仍可作为一个有效的手段来区分是个体用户还是组团用户。</li>
+<li>token，因为http是无状态的，这意味着每个请求都是独立的，所以你不能因为用户的上一个请求通过登录了，下一个请求就不检验这个用户是否合法。因此会用token来代表用户的合法性。</li>
+<li>签名，我们知道文件下载的时候会检验下载下来的文件签名是否与官方公布的文件签名是否一致，这样就可以避免文件被篡改或者下载不完整。同样的，我们也可以用签名来验证一个客户端api请求的合法性。</li>
+</ul>
+
+
+<p>攻击（attack）。攻击一般分两种，非法攻击与合理攻击。两者的区别在于是否篡改app设计的功能行为。所以举个例子，合理攻击包括</p>
+
+<ul>
+<li>组织1000个人，每人操作10个手机，定点（比如晚上9点）使用app的上传视频功能，结果服务器搞崩了几个小时。</li>
+<li>通过抓包的方式，发现正常请求一个用户的信息的时候，会泄露这个人的密码等隐私信息（虽然没展现在界面上），所以你通过这个办法获取到了某个重要人物的密码，登录他的账号后，给他传了一些不可描述的视频&hellip;</li>
+<li>人为上传敏感视频或内容&hellip;</li>
+</ul>
+
+
+<p>一般可以进行合理攻击的原因都在于产品/接口设计缺陷，在设计实施时有意识想想这块问题，基本都能避免。所以后面我们主要针对非法攻击这块。</p>
+
+<p>刚才给非法攻击下了一个定义，非法攻击是指篡改了app原本的功能行为的攻击行为，所以，既然与原本的app行为不一致，那很明显，这种攻击是指有人通过代码/工具模拟或篡改app行为，所以这种攻击一般具有以下特征：</p>
+
+<ul>
+<li>高频</li>
+<li>大量请求</li>
+<li>集中，所有请求通过某一UserId或者某一IP或者某一IMEI发起。</li>
+</ul>
+
+
+<p>既然我们知道了非法攻击的定义与特征，有什么办法可以避免呢？换言之，有什么办法可以避免别人模拟或篡改app行为呢？其实答案也很简单，那就是</p>
+
+<ul>
+<li>不让其他人发现app行为背后的请求与逻辑</li>
+<li>对每个用户请求采用签名验证，拒绝伪造请求。</li>
+<li>如果还没办法做到前两项，那么还能根据非法攻击的特征进行预防。</li>
+</ul>
+
+
+<p>不让其他人发现app行为背后的请求与逻辑，指的是对外界可见的各个层面进行保密/加密，比较常见的办法有</p>
+
+<ol>
+<li>android混淆</li>
+<li>android加固/加壳</li>
+<li>重要参数与方法用native的方式写成so，比如key与加密的方法</li>
+<li><strong>HTTPS + pinning</strong></li>
+<li>接口级别加密</li>
+</ol>
+
+
+<p>前三条比较常见，大部分公司都是这么做的，第四条做到的公司不是太多。第四条的核心目的是为了防抓包，也就是说当别人无法通过反编译或者抓包获取你的api方法与参数时，大部分的攻击方法就会失效。但许多公司只上了HTTPS，却没有开pinning。</p>
+
+<p>划重点</p>
+
+<p><strong>请让你的工程师开启HTTPS + pinning</strong></p>
+
+<p><strong>请让你的工程师开启HTTPS + pinning</strong></p>
+
+<p><strong>请让你的工程师开启HTTPS + pinning</strong></p>
+
+<p>这一条简单有效的办法可以在创业中前期（百万之前吧）避开各种蛇虫鼠蚁。</p>
+
+<p>第五条就是比较变态了，有利有弊，弊端是工程师沟通成本、debug成本会增加，优势是接口加密级别提升不少，但个人不太建议这么做，原因是当你做好前4条之后，破解难度已经很高了，大部分人无法突破前四道防线。而能突破前四条防线的人，估计也能突破第五条防线&hellip;</p>
+
+<p>当你的app加密级别比较高，相当于你给自己设了一道暗门，只有你自己知道入口在哪里，其他人根本找不到你的入口。虽然这个办法很好，可是你心理还是嘀咕，万一，真的要是万一别人知道了你的暗门，轻轻一推就能进来了，这是不是太不安全了。那好，那就给你的暗门再装一道人脸识别的开关吧，这下除了你之外就没人能进来了。</p>
+
+<p>对于app而言，这人脸识别就是对每个请求采用签名验证。</p>
+
+<p>签名验证的基本原理是只有你自己知道加密秘钥与加密方法，所以你可以对每一个请求进行签名计算，服务器根据传上来的签名进行校验，如果签名有效，就转去相应的逻辑处理，如果签名无效，就直接拒绝请求。</p>
+
+<p>对于签名机制的设计，最好考虑到以下几点：</p>
+
+<ol>
+<li>对签名加上时间戳，这样可以保证每个请求的签名都不一样</li>
+<li>对签名的内容加上用户相关的信息，比如token</li>
+<li>对签名进行检查，同一合法的签名只允许通过一次，这样可以防御别人发起DDOS攻击。</li>
+<li>请为签名秘钥添加版本管理，避免秘钥泄露带来的秘钥更换的问题。</li>
+<li>注意在客户端保护签名秘钥与签名方法，请参见『增长黑客之防御术2』</li>
+</ol>
+
+
+<p>划重点：</p>
+
+<p>请开启<strong>HTTPS + pinning</strong>，以及采取<strong>签名验证</strong></p>
+
+<p>请开启<strong>HTTPS + pinning</strong>，以及采取<strong>签名验证</strong></p>
+
+<p>请开启<strong>HTTPS + pinning</strong>，以及采取<strong>签名验证</strong></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Stoned</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2017-08-19T11:06:35+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>11:06 am</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2017/02/03/2016nian-zhong-zong-jie/" title="Previous Post: 2016年终总结">&laquo; 2016年终总结</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2018/02/05/sheng-ri-,kuai-le/" title="Next Post: 生日，快乐">生日，快乐 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2018/02/05/sheng-ri-,kuai-le/">生日，快乐</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/08/19/zeng-chang-hei-ke-zhi-fang-yu-zhu/">增长黑客之防御术</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/02/03/2016nian-zhong-zong-jie/">2016年终总结</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/09/26/a-letter-to-my-daughter/">写给我未来的女儿</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/09/20/deeplink/">Deeplink</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/huangxiangdan">@huangxiangdan</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'huangxiangdan',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2018 - Stoned -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

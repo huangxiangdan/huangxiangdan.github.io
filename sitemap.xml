@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://huangxiangdan.github.io/blog/2018/02/05/sheng-ri-,kuai-le/</loc>
+<lastmod>2018-02-05T19:20:49+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2017/08/19/zeng-chang-hei-ke-zhi-fang-yu-zhu/</loc>
+<lastmod>2017-08-19T11:06:35+08:00</lastmod>
+</url>
+<url>
+<loc>http://huangxiangdan.github.io/blog/2017/02/03/2016nian-zhong-zong-jie/</loc>
+<lastmod>2017-02-03T07:38:01+08:00</lastmod>
+</url>
+<url>
 <loc>http://huangxiangdan.github.io/blog/2016/09/26/a-letter-to-my-daughter/</loc>
 <lastmod>2016-09-26T21:37:17+08:00</lastmod>
 </url>
@@ -149,10 +161,10 @@
 <lastmod>2012-03-03T00:00:00+08:00</lastmod>
 </url>
 <url>
-<loc>http://huangxiangdan.github.io/blog/archives/</loc>
+<loc>http://huangxiangdan.github.io/</loc>
 </url>
 <url>
-<loc>http://huangxiangdan.github.io/</loc>
+<loc>http://huangxiangdan.github.io/blog/archives/</loc>
 </url>
 <url>
 <loc>http://huangxiangdan.github.io/blog/categories/work/</loc>
